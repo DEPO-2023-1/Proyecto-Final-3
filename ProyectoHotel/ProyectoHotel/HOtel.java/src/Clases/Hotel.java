@@ -551,7 +551,11 @@ public class Hotel implements Serializable{
 		else if (opcion == 2) {
 			
 			
-			
+			//String tipo = frame.getTipo();
+			//String nombre = frame.getNombre();
+			//String precio = frame.getPrecio);
+			//String horaInicio = frame.getHoraInicio();
+			//String horaFinal = frame.getHoraFinal();
 			
 			String tipo = input("Ingrese si es menu del comedor o del servicio a la habitacion");
 			String nombre = input("Ingrese el nombre del producto");
@@ -625,11 +629,18 @@ public class Hotel implements Serializable{
 		}
 
 		else if (opcion == 2) {
+			//String IDHabitacion = frame.getHabitacion();
 			String tipo = input("\nIngrese el tipo de la habitacion");
 			for(Habitacion h: habitaciones) {
 				String tipo2 = h.getTipo();
 				if (tipo.equals(tipo2)) {
 
+					//int inicialanio = frame.getIniclaAnio();
+					//int inicialMes = frame.getInicialMes();
+					//int inicialDia = frame.getInicialDia();
+					//int finalAnio = frame.getfinalAnio();
+					//int finalMes = frame.finalMes();
+					//int finalDia = frame.getFinalDia();
 					int inicialAnio = Integer.parseInt(input("Ingrese el año del dia de inicio de la temporada"));
 					int inicialMes = Integer.parseInt(input("Ingrese el mes de día del inicio de la temporada"));
 					int inicialDia = Integer.parseInt(input("Ingrese el día del inicio de la temporada"));
