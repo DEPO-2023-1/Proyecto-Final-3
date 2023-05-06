@@ -7,7 +7,7 @@ public class InterfazMenuEmpleado extends JFrame{
 
     JLabel lbmenu;
 
-    public void inicializar(){
+    public InterfazMenuEmpleado(){
 
         lbmenu = new JLabel();
 
