@@ -13,6 +13,8 @@ import java.io.ObjectOutputStream;
 public class App {
     
 	public static Hotel hotel;
+	
+	//public static Frame frame;
     
     public void mostrarMenu(int opcion) {
     	
@@ -51,9 +53,14 @@ public class App {
 				System.out.println("1- Administrador");
 				System.out.println("2- Recepcionista");
 				System.out.println("3- Empleado\n");
-
+				
+				// int usuario = frame.getUsuario(); 
+				
 				int usuario = Integer.parseInt(input(""));
-
+				
+				// login = frame.getLogin();
+				// contrasena = frame.getContrasena();
+				
                 String login = input("Ingrese su Login por favor ");
                 String contrasena = input("Ingrese su contraseña por favor ");
                 
@@ -68,6 +75,7 @@ public class App {
 	                int opcion = Integer.parseInt((input("Seleccione una opcion por favor: ")));
 	
 					if (usuario == 1) {
+						
 						if (opcion == 1) {
 							hotel.cargarHotel();
 						}

@@ -17,6 +17,8 @@ public class Hotel implements Serializable{
     private ArrayList<Habitacion> habitaciones;
     private ArrayList<Inventario> inventarios;
     private ArrayList<MenuRestaurante> productos;
+    
+  //public static Frame frame;
 
     public Hotel(){
     	this.grupos = new ArrayList<Grupo>();
@@ -62,9 +64,14 @@ public class Hotel implements Serializable{
 
     public void agregarConsumo(){
     	int valor=0;
+    	//String IDHabitacion = frame.getIDHabitacion();
+    	//String servicio = frame.getServicio();
+    	// int menu_o_servicio = frame.getTipo();
     	String IDHabitacion = input("Ingrese la habitacion");
     	String servicio = input("Ingrese el servcio consumido");
     	int menu_o_servicio = Integer.parseInt(input("Ingrese 1 si su servicio es de ¨Menu Restaurante¨, de lo contrario ingrese 2 si su servicio es de otra clase"));
+    	
+    	
     	
         factura(IDHabitacion, servicio, menu_o_servicio);
         for (Habitacion h: habitaciones) {
@@ -91,6 +98,10 @@ public class Hotel implements Serializable{
     }
     public void agregarPago(){
     	int valor=0;
+    	//String IDHabitacion = frame.getIDHabitacion;
+    	//String servicio = frame.getServicio;
+    	//String menu_o_servicio = frame.getTipo;
+    	
     	String IDHabitacion = input("Ingrese la habitacion");
     	String servicio = input("Ingrese el servcio consumido");
         int menu_o_servicio = Integer.parseInt(input("Ingrese 1 si su servicio es de ¨Menu Restaurante¨, de lo contrario ingrese 2 si su servicio es de otra clase"));
@@ -156,7 +167,7 @@ public class Hotel implements Serializable{
 		System.out.println("7- Vista");
 		System.out.println("8- Precio");
 		System.out.println("9- Reservadas en una determinada fecha");
-
+		
 		int opcion = Integer.parseInt(input(""));
 
 		if (opcion == 9){
