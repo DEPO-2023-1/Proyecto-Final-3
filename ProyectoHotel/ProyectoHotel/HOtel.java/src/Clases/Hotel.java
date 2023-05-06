@@ -594,29 +594,35 @@ public class Hotel implements Serializable{
 			System.out.println("2- Actualizar capacidad maxima de adultos");
 			System.out.println("3- Actualizar precio por tipo de habitacion");
 			int eleccion = Integer.parseInt(input(""));
-
+			
 			if (eleccion == 3) {
+				//String tipo = frame.getTipo();
+				//float cambio = frame.getCambio();
 				String tipo = input("\nIngrese el tipo de la habitacion");
+				float cambio = Float.parseFloat(input("Ingrese el nuevo precio"));
 				for(Habitacion h: habitaciones) {
 					String tipo2 = h.getTipo();
 					if (tipo.equals(tipo2)) {
-						float cambio = Float.parseFloat(input("Ingrese el nuevo precio"));
 						h.setPrecioI(cambio);
 						aceptado = true;
 					}
 				}
 			}
 
-			else {       
+			else {
+				//String IDHabitacion = frame.getIDHabitacion();
+				
 				String IDHabitacion = input("\nIngrese el ID de la habitacion");
 				for(Habitacion h: habitaciones) {
 					String nombre = h.getIdHabitacion();
 					if (nombre.equals(IDHabitacion)) {
 						if (eleccion == 1) {
+							//int cambio = frame.getCambio();
 							int cambio = Integer.parseInt(input("Ingrese la nueva cantidad"));
 							h.setCapacidadNino(cambio);
 						}
 						if (eleccion == 2) {
+							//int cambio = frame.getCambio();
 							int cambio = Integer.parseInt(input("Ingrese la nueva cantidad"));
 							h.setCapaciodadAdulto(cambio);
 						}
@@ -662,10 +668,12 @@ public class Hotel implements Serializable{
 		}
 
 		else if (opcion == 3) {
+			//string servicio = frame.getServicio();
 			String servicio = input("Ingrese el servicio que quiere actualizar");
 			for (Servicio s: servicios) {
 				String servicio2 = s.getNombre();
 				if (servicio.equals(servicio2)) {
+					//float cambio = frame.getCambio();
 					float cambio = Float.parseFloat(input("Ingrese el nuevo precio del servicio"));
 					s.setPrecio(cambio);
 					aceptado = true;
@@ -675,7 +683,8 @@ public class Hotel implements Serializable{
 		}
 
 		else if (opcion == 4) {
-
+			
+			//string tipo = frame.getTipo();
 			String tipo = input("Ingrese el tipo de menú de su producto al que quiere modificar (ServicioHabitacion o Comedor)");
 
 			for(MenuRestaurante r: productos) {
@@ -686,6 +695,7 @@ public class Hotel implements Serializable{
 					System.out.println("2- Actualizar hora de inicio de disponibilidad del producto");
 					System.out.println("3- Actualizar hora del final de la disponibilidad del producto");
 					int eleccion = Integer.parseInt(input(""));
+					//int cambio = frame.getCambio();
 
 					if (eleccion == 1) {
 						float cambio = Float.parseFloat(input("Ingrese el nuevo precio"));
