@@ -44,18 +44,14 @@ public class InterfazLogin extends JFrame{
                 InterfazMenuAdmin admin = new InterfazMenuAdmin();
             }
             if (tipo == 2){
-                InterfazMenuAdmin recep = new InterfazMenuAdmin();
+                InterfazMenuRecep recep = new InterfazMenuRecep();
             }
             if (tipo == 3){
-                InterfazMenuAdmin admin = new InterfazMenuAdmin();
+                InterfazMenuEmpleado admin = new InterfazMenuEmpleado();
             }
     		
             
     	
-    	}
-    	else {    
-    		InterfazMenuEmpleado recep = new InterfazMenuEmpleado();
-            System.out.println(contrasena);
     	}
     }
     

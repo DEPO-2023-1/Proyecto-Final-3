@@ -13,10 +13,10 @@ import javax.swing.JRadioButton;
 
 public class PanelSurLogin extends JPanel implements ActionListener{
 
-    private static final String login = "login";
-    private final static String Admin = "admin";
-	private final static String Empleado = "empleado";
-	private final static String Resepcionista= "recepcionista";
+    private static final String LOGIN = "login";
+    private final static String ADMIN = "admin";
+	private final static String EMPLEADO = "empleado";
+	private final static String RESEPCIONISTA= "recepcionista";
 	private JLabel labAdmin;
 	private JLabel labEmpleado;
 	private JLabel labResepcionista;
@@ -33,39 +33,37 @@ public class PanelSurLogin extends JPanel implements ActionListener{
     	this.interfaz = interfaz;
     	
     	labAdmin = new JLabel("        Administrador:");
-		labEmpleado = new JLabel("        Empleado:");
 		labResepcionista = new JLabel("          Resepcionista:");
+		labEmpleado = new JLabel("        Empleado:");
+		
 		
 		butAdmin = new JRadioButton();
 		butAdmin.addActionListener(this);
-		butAdmin.setActionCommand(Admin);	
-		butAdmin.setForeground(Color.WHITE);
-		
-		butEmpleado = new JRadioButton();
-		butEmpleado.addActionListener(this);
-		butEmpleado.setActionCommand(Empleado);	
-		butEmpleado.setForeground(Color.WHITE);
+		butAdmin.setActionCommand(ADMIN);	
 		
 		butResepcionista = new JRadioButton();
 		butResepcionista.addActionListener(this);
-		butResepcionista.setActionCommand(Resepcionista);	
-		butResepcionista.setForeground(Color.WHITE);
+		butResepcionista.setActionCommand(RESEPCIONISTA);	
+
+		butEmpleado = new JRadioButton();
+		butEmpleado.addActionListener(this);
+		butEmpleado.setActionCommand(EMPLEADO);	
 		
 		ButtonGroup grupo = new ButtonGroup();
 		grupo.add(butAdmin);
-		grupo.add(butEmpleado);
 		grupo.add(butResepcionista);
+		grupo.add(butEmpleado);
         
 		butLogin = new JButton("Login");
 		butLogin.addActionListener(this);
-		butLogin.setActionCommand(login);
+		butLogin.setActionCommand(LOGIN);
 
         add(labAdmin);
         add(butAdmin);
-        add(labEmpleado);
-        add(butEmpleado);
         add(labResepcionista);
         add(butResepcionista);
+		add(labEmpleado);
+        add(butEmpleado);
         add(butLogin);
     }
     
@@ -73,19 +71,19 @@ public class PanelSurLogin extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		String grito = e.getActionCommand();
 		
-		if (grito.equals(Admin)) {
+		if (grito.equals(ADMIN)) {
 			tipo = 1;
 		}
 		
-		if (grito.equals(Empleado)) {
-			tipo = 3;
-		}
-		
-		if (grito.equals(Resepcionista)) {
+		if (grito.equals(RESEPCIONISTA)) {
 			tipo = 2;
 		}
 		
-		if (grito.equals(login)) {
+		if (grito.equals(EMPLEADO)) {
+			tipo = 3;
+		}
+		
+		if (grito.equals(LOGIN)) {
 			
 			interfaz.login(tipo);
 			
