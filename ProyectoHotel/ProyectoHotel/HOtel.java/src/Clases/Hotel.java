@@ -35,7 +35,7 @@ public class Hotel implements Serializable{
 		try{
 			
 			if (usuario == 1){
-				direccion = "HOtel.java/data/admins.txt";
+				direccion = "ProyectoHotel/ProyectoHotel/HOtel.java/data/admins.txt";
 			}
 			else if (usuario == 2){
 				direccion = "HOtel.java/data/recepcionistas.txt";
