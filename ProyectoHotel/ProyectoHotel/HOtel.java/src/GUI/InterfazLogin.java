@@ -12,21 +12,20 @@ public class InterfazLogin extends JFrame{
     private PanelSurLogin PanelSur;
 
     public InterfazLogin(){
-        setSize(new Dimension(1000, 650));
+        
         PanelNorte = new PanelNorteLogin();
         PanelCentro = new PanelCentroLogin();
         PanelSur = new PanelSurLogin();
 
-        JPanel panelCentral = new JPanel(new BorderLayout());
-		panelCentral.add(PanelNorte, BorderLayout.NORTH);
-		panelCentral.add(PanelCentro, BorderLayout.CENTER);
-		panelCentral.add(PanelSur, BorderLayout.SOUTH);
-		
-		setContentPane(panelCentral);
-
-        setVisible(true);
-		setResizable(true);
+        setLayout(new BorderLayout());
+		add(PanelNorte, BorderLayout.NORTH);
+		add(PanelCentro, BorderLayout.CENTER);
+		add(PanelSur, BorderLayout.SOUTH);
+			
+        setSize(new Dimension(1000, 650));
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setVisible(true);
 
 
     }
