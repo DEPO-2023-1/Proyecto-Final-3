@@ -359,28 +359,12 @@ public class Hotel implements Serializable{
     	
     }
 
-    public void cancelarReserva(){
+    public void cancelarReserva(int inicialAnio, int inicialMes, int inicialDia, int finalAnio, int finalMes, int finalDia, String IDHabitacion){
     	
     	String respuesta = "Por favor espere que pasen 48 horas despues de reservar para cancelar la reserva";
     	boolean verdad = Boolean.parseBoolean(input("Ingrese true si su reserva se hizo hace mas de 48 horas, si no ingrese false"));
     	if (verdad) {
-    		String IDHabitacion = input("Ingrese el ID de su reserva");
     		
-    		//String IDHabitacion = frame.getHabitacion();
-    		//int inicialanio = frame.getIniclaAnio();
-            //int inicialMes = frame.getInicialMes();
-            //int inicialDia = frame.getInicialDia();
-            //int finalAnio = frame.getfinalAnio();
-            //int finalMes = frame.finalMes();
-            //int finalDia = frame.getFinalDia();
-    		
-    		int inicialAnio = Integer.parseInt(input("Ingrese el año del dia de inicio del reserva"));
-            int inicialMes = Integer.parseInt(input("Ingrese el mes de día del inicio de reserva"));
-            int inicialDia = Integer.parseInt(input("Ingrese el día del inicio de reserva"));
-            int finalAnio = Integer.parseInt(input("Ingrese el año del dia del final de reserva"));
-            int finalMes = Integer.parseInt(input("Ingrese el mes de día del final de reserva"));
-            int finalDia = Integer.parseInt(input("Ingrese el día del final de reserva"));
-            
             @SuppressWarnings("deprecation")
     		Date inicialDate = new Date(inicialAnio, inicialMes, inicialDia);
             @SuppressWarnings("deprecation")
@@ -401,7 +385,6 @@ public class Hotel implements Serializable{
     				grupos.remove(g);
     			}
             }
-            respuesta  = "Reserva cancelada";
     	}
     	System.out.println(respuesta);
     

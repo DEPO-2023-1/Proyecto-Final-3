@@ -107,6 +107,7 @@ public class PanelBotonRecep extends JPanel implements ActionListener{
 			    		}
 			    	}
 			    	interfaz.crearReserva(grupo, inicialAnio, inicialMes, inicialDia, finalAnio, finalMes, finalDia, respuesta);
+			    	JOptionPane.showMessageDialog(interfaz,"Su reserva fue creada");
 				}
 				
 			}
@@ -114,13 +115,26 @@ public class PanelBotonRecep extends JPanel implements ActionListener{
 			
 		}
 		if (grito.equals(CancelarReserva)) {
-			JOptionPane.showInputDialog("hola");
 			
-			
-			
+			String tiempo = JOptionPane.showInputDialog("Ingrese true si su reserva se hizo hace mas de 48 horas, si no ingrese false");
+			if (tiempo.equals("true")) {			
+				String IDHabitacion = JOptionPane.showInputDialog("Ingrese el ID de su habitacion)");
+				int inicialAnio = Integer.parseInt(JOptionPane.showInputDialog("Año inicio de reserva"));
+				int inicialMes = Integer.parseInt(JOptionPane.showInputDialog("Mes inicio de reserva"));
+				int inicialDia = Integer.parseInt(JOptionPane.showInputDialog("Día inicio de reserva"));
+				int finalAnio = Integer.parseInt(JOptionPane.showInputDialog("Año final de reserva"));
+				int finalMes = Integer.parseInt(JOptionPane.showInputDialog("Mes final de reserva"));
+				int finalDia = Integer.parseInt(JOptionPane.showInputDialog("Día final de reserva"));
+				
+				interfaz.cancelarReserva(inicialAnio, inicialMes, inicialDia, finalAnio, finalMes, finalDia, IDHabitacion);
+				JOptionPane.showMessageDialog(interfaz,"Su reserva fue cancelada");
+			}
+
 		}
 		if (grito.equals(Checkout)) {
-			JOptionPane.showInputDialog("hola");
+			
+			
+			
 		}
 		if (grito.equals(ConInventario)) {
 			JOptionPane.showInputDialog("hola");
