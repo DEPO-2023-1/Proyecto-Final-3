@@ -11,7 +11,7 @@ public class PanelSurAdmin extends JPanel implements ActionListener{
 	private static final String archivos = "CARGAR INFO ARCHIVOS";
 	private static final String manual = "CARGAR INFO MANUAL";
 	private static final String actualizar = "ACTUALIZARINFO";
-	private static final String salir = "sALIR";
+	private static final String salir = "SALIR";
 
 	
 	private JButton archivosButton;
@@ -25,22 +25,22 @@ public class PanelSurAdmin extends JPanel implements ActionListener{
 		setLayout(null);
 		
 		archivosButton = new JButton("CARGAR INFO ARCHIVOS");
-		archivosButton.setBounds(150, 180, 150, 50);
+		archivosButton.setBounds(100, 180, 300, 100);
 		archivosButton.addActionListener(this);
 		archivosButton.setActionCommand(archivos);
 		
 		manualButton = new JButton("CARGAR ARCHIVOS MANUAL");
-		manualButton.setBounds(750, 180, 150, 50);
+		manualButton.setBounds(100, 380, 300, 100);
 		manualButton.addActionListener(this);
 		manualButton.setActionCommand(manual);
 		
 		actualizarButton = new JButton("ACTUALIZAR INFO");
-		actualizarButton.setBounds(450, 325, 150, 50);
+		actualizarButton.setBounds(600, 180, 300, 100);
 		actualizarButton.addActionListener(this);
 		actualizarButton.setActionCommand(actualizar);
 		
 		salirButton = new JButton("SALIR");
-		salirButton.setBounds(150, 480, 150, 50);
+		salirButton.setBounds(600, 380, 300, 100);
 		salirButton.addActionListener(this);
 		salirButton.setActionCommand(salir);
 
