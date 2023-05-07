@@ -33,7 +33,7 @@ public class App {
 			System.out.println("\n5- Condultar informaicon habitaciones");
     	}
     	else if (opcion == 3) {
-			System.out.println("\n////////Bienvenido al menu de administradores////////");
+			System.out.println("\n////////Bienvenido al menu de empleados////////");
     		System.out.println("\n1- Agregar consumo a una habitacion");
     		System.out.println("\n2- Agregar un pago de un consumo");
     		System.out.println("\n3- Hacer factura");
