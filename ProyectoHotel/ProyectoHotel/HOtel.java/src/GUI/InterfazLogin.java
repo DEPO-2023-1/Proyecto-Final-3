@@ -37,15 +37,16 @@ public class InterfazLogin extends JFrame{
     public void login(int tipo) {
     	String usuario = PanelCentro.getTxtNum1();
     	String contrasena = PanelCentro.getTxtNum2();
-        boolean ingreso = false;
-    	ingreso = App.seleccionarUsuario(usuario, contrasena, tipo);
+    	boolean ingreso = App.seleccionarUsuario(usuario, contrasena, tipo);
+
     	if (ingreso) {
     		InterfazMenuAdmin admin = new InterfazMenuAdmin();
+            
     	
     	}
     	else {    
     		InterfazMenuEmpleado recep = new InterfazMenuEmpleado();
-
+            System.out.println(contrasena);
     	}
     }
     

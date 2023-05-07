@@ -78,11 +78,11 @@ public class PanelSurLogin extends JPanel implements ActionListener{
 		}
 		
 		if (grito.equals(Empleado)) {
-			tipo = 2;
+			tipo = 3;
 		}
 		
 		if (grito.equals(Resepcionista)) {
-			tipo = 3;
+			tipo = 2;
 		}
 		
 		if (grito.equals(login)) {
