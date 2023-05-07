@@ -1,21 +1,27 @@
 package GUI;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
+
+import Clases.App;
+import Clases.Hotel;
 
 import java.awt.*;
+
 
 public class InterfazLogin extends JFrame{
 
     private PanelNorteLogin PanelNorte;
     private PanelCentroLogin PanelCentro;
     private PanelSurLogin PanelSur;
+    private App app;
+    private Hotel hotel;
 
     public InterfazLogin(){
-        
+    	
+        app = new App();
         PanelNorte = new PanelNorteLogin();
         PanelCentro = new PanelCentroLogin();
-        PanelSur = new PanelSurLogin();
+        PanelSur = new PanelSurLogin(this);
 
         setLayout(new BorderLayout());
 		add(PanelNorte, BorderLayout.NORTH);
@@ -29,7 +35,20 @@ public class InterfazLogin extends JFrame{
 
 
     }
+    public void login(int tipo) {
+    	String usuario = PanelCentro.getTxtNum1();
+    	String contrasena = PanelCentro.getTxtNum2();
+    	boolean ingreso = hotel.seleccionarUsuario(usuario, contrasena, tipo);
+    	if (ingreso) {
+    		System.out.println("suuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
+    	
+    	}
+    	else {
+    		System.out.println("noooooooooooooooooo");
+    	}
+    }
+    
     public static void main(String [] args) {
         InterfazLogin ip = new InterfazLogin();
-}
+    }
 }

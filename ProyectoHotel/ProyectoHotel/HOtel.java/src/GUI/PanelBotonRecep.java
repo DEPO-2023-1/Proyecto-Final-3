@@ -20,7 +20,7 @@ public class PanelBotonRecep extends JPanel implements ActionListener{
 	private JButton butCancelarReserva;
 	private JButton butCheckout;
 	private JButton butConInventario;
-	private JButton butConHabitacion;
+	private JButton butConHabitacion; 
 	
 	
 	public PanelBotonRecep() {
@@ -28,27 +28,27 @@ public class PanelBotonRecep extends JPanel implements ActionListener{
 		setLayout(null);
 		
 		butCrearReserva = new JButton("Crear Reserva");
-		butCrearReserva.setBounds(150, 180, 150, 50);
+		butCrearReserva.setBounds(120, 180, 150, 50);
 		butCrearReserva.addActionListener(this);
 		butCrearReserva.setActionCommand(CrearReserva);
 		
 		butCancelarReserva = new JButton("Cancelar Reserva");
-		butCancelarReserva.setBounds(750, 180, 150, 50);
+		butCancelarReserva.setBounds(720, 180, 150, 50);
 		butCancelarReserva.addActionListener(this);
 		butCancelarReserva.setActionCommand(CancelarReserva);
 		
 		butCheckout = new JButton("Checkout");
-		butCheckout.setBounds(450, 325, 150, 50);
+		butCheckout.setBounds(420, 325, 150, 50);
 		butCheckout.addActionListener(this);
 		butCheckout.setActionCommand(Checkout);
 		
 		butConInventario = new JButton("Consultar Inventario");
-		butConInventario.setBounds(150, 480, 150, 50);
+		butConInventario.setBounds(120, 480, 150, 50);
 		butConInventario.addActionListener(this);
 		butConInventario.setActionCommand(ConInventario);
 		
 		butConHabitacion = new JButton("Consultar Habitacion");
-		butConHabitacion.setBounds(750, 480, 150, 50);
+		butConHabitacion.setBounds(720, 480, 150, 50);
 		butConHabitacion.addActionListener(this);
 		butConHabitacion.setActionCommand(ConHabitacion);
 
@@ -66,7 +66,21 @@ public class PanelBotonRecep extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		String grito = e.getActionCommand();
 		
-		
+		if (grito.equals(CrearReserva)) {
+			
+		}
+		if (grito.equals(CancelarReserva)) {
+			
+		}
+		if (grito.equals(Checkout)) {
+					
+				}
+		if (grito.equals(ConInventario)) {
+			
+		}
+		if (grito.equals(ConHabitacion)) {
+			
+		}
 		
 	}
 }

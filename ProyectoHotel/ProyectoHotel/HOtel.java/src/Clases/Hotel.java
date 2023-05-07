@@ -295,13 +295,15 @@ public class Hotel implements Serializable{
         int finalMes = Integer.parseInt(input("Ingrese el mes de día del final de reserva"));
         int finalDia = Integer.parseInt(input("Ingrese el día del final de reserva"));
         
-        //int inicialanio = frame.getIniclaAnio();
+        //int inicialAnio F= frame.getIniclaAnio();
         //int inicialMes = frame.getInicialMes();
         //int inicialDia = frame.getInicialDia();
         //int finalAnio = frame.getfinalAnio();
         //int finalMes = frame.finalMes();
         //int finalDia = frame.getFinalDia();
+		
         
+		
         @SuppressWarnings("deprecation")
 		Date inicialDate = new Date(inicialAnio, inicialMes, inicialDia);
         @SuppressWarnings("deprecation")

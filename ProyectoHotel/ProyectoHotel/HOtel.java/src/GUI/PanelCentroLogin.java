@@ -1,17 +1,20 @@
 package GUI;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 public class PanelCentroLogin extends JPanel{
 
+	
     private JLabel lbNum1;
 	private JLabel lbNum2;
 	
 	private JTextField txtNum1;
 	private JTextField txtNum2;
+	
+	
 	
 	
 	public PanelCentroLogin() {
@@ -29,6 +32,8 @@ public class PanelCentroLogin extends JPanel{
 		
 		txtNum2 = new JTextField();
 		txtNum2 .setPreferredSize(new Dimension(400, 50));
+		
+		
 
 		setLayout(new FlowLayout());
 
@@ -40,9 +45,19 @@ public class PanelCentroLogin extends JPanel{
 		add(lbNum1);
 		add(txtNum1);
 		add(lbNum2);
-		add(txtNum2);
+		add(txtNum2);	
 
-		
 	}
 
+
+	public String getTxtNum1() {
+		return txtNum1.getText();
+	}
+
+
+	public String getTxtNum2() {
+		return txtNum2.getText();
+	}
+
+	
 }
