@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class PanelSurAdmin extends JPanel implements ActionListener{
@@ -55,7 +56,22 @@ public class PanelSurAdmin extends JPanel implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String grito = e.getActionCommand();
-		
+		if (grito.equals(archivos)) {
+			
+			String valor = JOptionPane.showInputDialog("Ingrese la ruta del archivo:");
+			
+		}
+		if (grito.equals(manual)) {
+			
+			String algo = JOptionPane.showInputDialog("hola");
+		}
+		if (grito.equals(actualizar)) {
+			
+			String nose = JOptionPane.showInputDialog("Ingrese la ruta del archivo:");
+		}
+		if (grito.equals(salir)) {
+			String Stringsalir = JOptionPane.showInputDialog("Seguro?");
+		}
 		
 		
 	}
