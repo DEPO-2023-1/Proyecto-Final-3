@@ -15,11 +15,11 @@ public class App {
 	public static Hotel hotel;
 	
 	//public static Frame frame;
-	/* 
+	
 	public App() {
 		hotel = new Hotel();
 	}
-    */
+    
     public void mostrarMenu(int opcion) {
     	
     	if (opcion == 1) {
@@ -187,7 +187,7 @@ public class App {
 
 
 
-
+/* 
     public static void main(String[] args) throws Exception {
         App aplicacion = new App();
 		
@@ -202,10 +202,10 @@ public class App {
 		hotel = hotel1;
 		}
 		
-    	aplicacion.ejecutarOpciones();
+    	
 		serializarObjeto(hotel);
 		
-	}
-
+	}	
+*/
 	
 }

@@ -38,10 +38,10 @@ public class Hotel implements Serializable{
 				direccion = "ProyectoHotel/ProyectoHotel/HOtel.java/data/admins.txt";
 			}
 			else if (usuario == 2){
-				direccion = "HOtel.java/data/recepcionistas.txt";
+				direccion = "ProyectoHotel/ProyectoHotel/HOtel.java/data/recepcionistas.txt";
 			}
 			else if (usuario == 3){
-				direccion = "HOtel.java/data/empleado.txt";
+				direccion = "ProyectoHotel/ProyectoHotel/HOtel.java/data/empleado.txt";
 			}
 			FileReader fileReader = new FileReader(direccion);
             BufferedReader bufferedReader = new BufferedReader(fileReader);

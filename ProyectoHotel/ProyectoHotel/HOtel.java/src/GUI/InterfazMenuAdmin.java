@@ -26,9 +26,7 @@ public class InterfazMenuAdmin extends JFrame{
 
 
     }
-    public static void main(String [] args) {
-        InterfazMenuAdmin ip = new InterfazMenuAdmin();
-}
+    
 }
 
 

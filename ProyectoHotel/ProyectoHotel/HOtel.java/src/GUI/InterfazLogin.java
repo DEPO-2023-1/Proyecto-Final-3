@@ -40,7 +40,16 @@ public class InterfazLogin extends JFrame{
     	boolean ingreso = App.seleccionarUsuario(usuario, contrasena, tipo);
 
     	if (ingreso) {
-    		InterfazMenuAdmin admin = new InterfazMenuAdmin();
+            if (tipo == 1){
+                InterfazMenuAdmin admin = new InterfazMenuAdmin();
+            }
+            if (tipo == 2){
+                InterfazMenuAdmin recep = new InterfazMenuAdmin();
+            }
+            if (tipo == 3){
+                InterfazMenuAdmin admin = new InterfazMenuAdmin();
+            }
+    		
             
     	
     	}

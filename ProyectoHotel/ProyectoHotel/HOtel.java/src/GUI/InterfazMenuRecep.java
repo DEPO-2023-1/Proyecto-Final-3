@@ -30,10 +30,6 @@ public class InterfazMenuRecep extends JFrame{
         
         
     }
-
-    public static void main(String args[]){
-    	InterfazMenuRecep ventana = new InterfazMenuRecep();
-    }
 	
     
 }
