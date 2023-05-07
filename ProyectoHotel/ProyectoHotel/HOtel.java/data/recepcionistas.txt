@@ -1,1 +1,1 @@
-empleado,empleado
+resepcionista,resepcionista

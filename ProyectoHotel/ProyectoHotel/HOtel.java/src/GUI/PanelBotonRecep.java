@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class PanelBotonRecep extends JPanel implements ActionListener{
@@ -68,18 +69,20 @@ public class PanelBotonRecep extends JPanel implements ActionListener{
 		
 		if (grito.equals(CrearReserva)) {
 			
+			String valor = JOptionPane.showInputDialog("hola");
+			
 		}
 		if (grito.equals(CancelarReserva)) {
-			
+			JOptionPane.showInputDialog("hola");
 		}
 		if (grito.equals(Checkout)) {
-					
+			JOptionPane.showInputDialog("hola");
 		}
 		if (grito.equals(ConInventario)) {
-			
+			JOptionPane.showInputDialog("hola");
 		}
 		if (grito.equals(ConHabitacion)) {
-			
+			JOptionPane.showInputDialog("hola");
 		}
 		
 	}
