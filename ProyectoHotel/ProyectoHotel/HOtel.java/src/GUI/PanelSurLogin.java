@@ -22,6 +22,10 @@ public class PanelSurLogin extends JPanel{
         tipo.add(adminButton);
         tipo.add(employButton);
         tipo.add(recepButton);
+
+        add(adminButton);
+        add(employButton);
+        add(recepButton);
     }
     
 }

@@ -12,7 +12,7 @@ public class InterfazLogin extends JFrame{
     private PanelSurLogin PanelSur;
 
     public InterfazLogin(){
-        setSize(new Dimension(1000, 750));
+        setSize(new Dimension(1000, 650));
         PanelNorte = new PanelNorteLogin();
         PanelCentro = new PanelCentroLogin();
         PanelSur = new PanelSurLogin();
@@ -25,12 +25,12 @@ public class InterfazLogin extends JFrame{
 		setContentPane(panelCentral);
 
         setVisible(true);
-		setResizable(false);
+		setResizable(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
     }
     public static void main(String [] args) {
-        Interfaz ip = new Interfaz();
+        InterfazLogin ip = new InterfazLogin();
 }
 }

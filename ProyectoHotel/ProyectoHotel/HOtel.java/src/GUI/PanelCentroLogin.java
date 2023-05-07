@@ -20,13 +20,13 @@ public class PanelCentroLogin extends JPanel{
 		lbNum1.setPreferredSize(new Dimension(100, 50));
 		
 		txtNum1 = new JTextField();
-		txtNum1 .setPreferredSize(new Dimension(100, 50));
+		txtNum1 .setPreferredSize(new Dimension(100, 5));
 
 		lbNum2 = new JLabel("Contraseña");
 		lbNum2.setPreferredSize(new Dimension(100, 50));
 		
 		txtNum2 = new JTextField();
-		txtNum2 .setPreferredSize(new Dimension(100, 50));
+		txtNum2 .setPreferredSize(new Dimension(100, 5));
 
 	
 
