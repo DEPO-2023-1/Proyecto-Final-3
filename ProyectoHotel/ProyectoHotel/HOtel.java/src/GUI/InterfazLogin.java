@@ -79,6 +79,11 @@ public class InterfazLogin extends JFrame{
     	app.cancelarReserva(inicialAnio, inicialMes, inicialDia, finalAnio, finalMes, finalDia, IDHabitacion);
     }
     
+    public String checkOut(String IDHabitacion) {
+    	String respuesta = app.checkOut(IDHabitacion);
+    	return respuesta;
+    }
+    
     
     public static void main(String [] args) {
         InterfazLogin ip = new InterfazLogin();

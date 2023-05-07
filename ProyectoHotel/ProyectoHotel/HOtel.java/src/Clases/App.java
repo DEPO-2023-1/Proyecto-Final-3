@@ -170,6 +170,11 @@ public class App {
     	hotel.cancelarReserva(inicialAnio, inicialMes, inicialDia, finalAnio, finalMes, finalDia, IDHabitacion);
     }
     
+    public String checkOut(String IDHabitacion) {
+    	String respuesta = hotel.checkOut(IDHabitacion);
+    	return respuesta;
+    }
+    
     
     
     

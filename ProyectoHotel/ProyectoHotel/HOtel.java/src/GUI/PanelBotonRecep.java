@@ -133,11 +133,15 @@ public class PanelBotonRecep extends JPanel implements ActionListener{
 		}
 		if (grito.equals(Checkout)) {
 			
-			
-			
+			String IDHabitacion = JOptionPane.showInputDialog("Ingrese el ID de su habitacion)");
+			String checkOut = interfaz.checkOut(IDHabitacion);
+			JOptionPane.showMessageDialog(interfaz,checkOut);			
 		}
 		if (grito.equals(ConInventario)) {
 			JOptionPane.showInputDialog("hola");
+			
+			
+			
 		}
 		if (grito.equals(ConHabitacion)) {
 			JOptionPane.showInputDialog("hola");

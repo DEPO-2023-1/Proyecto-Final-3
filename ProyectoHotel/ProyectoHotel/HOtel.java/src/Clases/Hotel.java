@@ -390,45 +390,41 @@ public class Hotel implements Serializable{
     
     }
 
-    public void checkOut(){
+    public String checkOut(String id){
         float valor =0;
+        float valorFinal = 0;
         
-      //String IDHabitacion = frame.getHabitacion();
-        String id = input("Ingrese el ID de su habitación");
-        System.out.println("");
-        System.out.println("");
-    	System.out.println("Gracias por su estadía ");
-        System.out.println("----------------------------------------------");
+        
+        String respuesta = "";
         
         for(Habitacion h: habitaciones){
             if(id.equals(h.getIdHabitacion())){
-                System.out.println("Servicio.....................................Valor");
+            	respuesta = "Gracias por su estadía\n"
+                		+ "----------------------------------------------\n"
+                		+ "Servicio.....................................Valor\n";
                 for(ConsumoHab ch: h.getConsumos()){
                     for(Servicio s: servicios){
                         if(ch.getServicio().equals(s.getNombre())){
                             valor=s.getPrecio();
+                            valorFinal += valor;
                             String valors=Float.toString(valor);
-                            System.out.println(ch+".........................................."+valors);
+                            respuesta += ch+".........................................."+valors + "\n\n";
                             break;
                         }
                     }
+                    respuesta += "TOTAL.........................................."+valorFinal;
                     h.getConsumos().remove(ch);
+                    
                 }
+                
                 break;
             }
         }
-        System.out.println("----------------------------------------------------------");
-        System.out.println("Tenga buena tarde");
+        return respuesta;
 
     }
 
     public void cargarHotel() throws IOException{
-    	
-    	//String habitacion = frame.habitacion();
-    	//String inventario = frame.getInventario();
-    	//String Servicio = frame.getServicio();
-    	//String restaurante = frame.getRestaurante();
-    	//String temporada = frame.getTemporada();
     	
     	String habitaciones = input("Ingrese la ruta de archivo con la informacion de las habitaciones");
     	String inventario = input("Ingrese la ruta de archivo con la informacion del inventario");
