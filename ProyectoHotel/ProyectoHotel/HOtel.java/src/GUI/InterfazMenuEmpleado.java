@@ -16,7 +16,6 @@ public class InterfazMenuEmpleado extends JFrame{
         ///////Botones////////
         JButton botonOp1 = new JButton("Agregar consumo a una habitacion", null);
         botonOp1.addActionListener (new ActionListener() {
-
             @Override
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub

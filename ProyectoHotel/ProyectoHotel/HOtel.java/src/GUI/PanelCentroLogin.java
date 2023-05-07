@@ -16,6 +16,8 @@ public class PanelCentroLogin extends JPanel{
 	
 	public PanelCentroLogin() {
 
+		
+		
 		lbNum1 = new JLabel("Usuario: ");
 		lbNum1.setPreferredSize(new Dimension(100, 50));
 		
@@ -26,11 +28,11 @@ public class PanelCentroLogin extends JPanel{
 		lbNum2.setPreferredSize(new Dimension(100, 50));
 		
 		txtNum2 = new JTextField();
-		txtNum2 .setPreferredSize(new Dimension(100, 5));
+		txtNum2 .setPreferredSize(new Dimension(100, 200));
 
-	
+		setLayout(new FlowLayout());
 
-		setLayout(new GridLayout(2,2));
+		//setLayout(new GridLayout(2,2));
 		
 //		GridLayout gl = new GridLayout();
 //		setLayout(gl);
