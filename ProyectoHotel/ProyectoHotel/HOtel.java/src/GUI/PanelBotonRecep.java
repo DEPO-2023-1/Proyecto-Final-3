@@ -9,6 +9,8 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import Clases.Grupo;
+
 public class PanelBotonRecep extends JPanel implements ActionListener{
 	
 	private static final String CrearReserva = "CrearReserva";
@@ -22,9 +24,12 @@ public class PanelBotonRecep extends JPanel implements ActionListener{
 	private JButton butCheckout;
 	private JButton butConInventario;
 	private JButton butConHabitacion; 
+	private InterfazLogin interfaz;
 	
 	
-	public PanelBotonRecep() {
+	public PanelBotonRecep(InterfazLogin interfaz) {
+		
+		this.interfaz = interfaz;
 		
 		setLayout(null);
 		
@@ -69,11 +74,50 @@ public class PanelBotonRecep extends JPanel implements ActionListener{
 		
 		if (grito.equals(CrearReserva)) {
 			
-			String valor = JOptionPane.showInputDialog("hola");
+			int inicialAnio = Integer.parseInt(JOptionPane.showInputDialog("Año inicio de reserva"));
+			int inicialMes = Integer.parseInt(JOptionPane.showInputDialog("Mes inicio de reserva"));
+			int inicialDia = Integer.parseInt(JOptionPane.showInputDialog("Día inicio de reserva"));
+			int finalAnio = Integer.parseInt(JOptionPane.showInputDialog("Año final de reserva"));
+			int finalMes = Integer.parseInt(JOptionPane.showInputDialog("Mes final de reserva"));
+			int finalDia = Integer.parseInt(JOptionPane.showInputDialog("Día final de reserva"));
+			int canNinos = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de niños"));
+			int canAdultos = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de adultos"));
+			String[] disponible = interfaz.disponible(inicialAnio, inicialMes, inicialDia, finalAnio, finalMes, finalDia, canNinos, canAdultos);
+			String respuesta = disponible[0];
+			String precio = disponible[1];
+			if (respuesta.equals("no")){
+				JOptionPane.showInputDialog("No hay reserva dispobile");
+			}
+			else {
+				String aceptar = JOptionPane.showInputDialog("Su reserva costará "+precio+" ¿Desea aceptar? (escriba si o no)");
+				if (aceptar.equals("si")) {
+					
+					Grupo grupo = interfaz.newGrupo(inicialAnio, inicialMes, inicialDia, finalAnio, finalMes, finalDia, respuesta);
+					boolean centinela = true;
+			    	while(centinela) {
+			    		String nombre = JOptionPane.showInputDialog("Ingrese su nombre");
+			    		int cedula = Integer.parseInt(JOptionPane.showInputDialog("Ingrese su cedula"));
+						int edad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese su edad"));
+						String correo = JOptionPane.showInputDialog("Ingrese su correo, si no tiene precione enter");
+			    		interfaz.agregarHuespedGrupo(grupo, nombre, cedula, edad, correo);
+			    		
+			    		String nuevo = JOptionPane.showInputDialog("¿Quiere agregar otro huesped? (escriba si o no)");
+			    		if (nuevo.equals("no")) {
+			    			centinela = false;
+			    		}
+			    	}
+			    	interfaz.crearReserva(grupo, inicialAnio, inicialMes, inicialDia, finalAnio, finalMes, finalDia, respuesta);
+				}
+				
+			}
+
 			
 		}
 		if (grito.equals(CancelarReserva)) {
 			JOptionPane.showInputDialog("hola");
+			
+			
+			
 		}
 		if (grito.equals(Checkout)) {
 			JOptionPane.showInputDialog("hola");

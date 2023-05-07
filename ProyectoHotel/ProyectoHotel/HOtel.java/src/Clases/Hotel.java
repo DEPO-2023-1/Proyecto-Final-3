@@ -17,6 +17,7 @@ public class Hotel implements Serializable{
     private ArrayList<Habitacion> habitaciones;
     private ArrayList<Inventario> inventarios;
     private ArrayList<MenuRestaurante> productos;
+	private String IDHabitacion;
     
   //public static Frame frame;
 
@@ -285,67 +286,43 @@ public class Hotel implements Serializable{
     	return lista;
 
 	}
-
-    public void crearReserva(){
+	
+	public Grupo newGrupo(int inicialAnio, int inicialMes, int inicialDia, int finalAnio, int finalMes, int finalDia, String IDHabitacion){
+		@SuppressWarnings("deprecation")
+		Date inicialDate = new Date(inicialAnio, inicialMes, inicialDia);
+        @SuppressWarnings("deprecation")
+		Date finalDate = new Date(finalAnio, finalMes, finalDia);
     	
-    	int inicialAnio = Integer.parseInt(input("Ingrese el año del dia de inicio del reserva"));
-        int inicialMes = Integer.parseInt(input("Ingrese el mes de día del inicio de reserva"));
-        int inicialDia = Integer.parseInt(input("Ingrese el día del inicio de reserva"));
-        int finalAnio = Integer.parseInt(input("Ingrese el año del dia del final de reserva"));
-        int finalMes = Integer.parseInt(input("Ingrese el mes de día del final de reserva"));
-        int finalDia = Integer.parseInt(input("Ingrese el día del final de reserva"));
+    	Grupo grupo = new Grupo(IDHabitacion, inicialDate, finalDate);
+    	
+    	return grupo;
+	}
+	
+    public void crearReserva(Grupo grupo, int inicialAnio, int inicialMes, int inicialDia, int finalAnio, int finalMes, int finalDia, String IDHabitacion ){
+    	
+    	@SuppressWarnings("deprecation")
+		Date inicialDate = new Date(inicialAnio, inicialMes, inicialDia);
+        @SuppressWarnings("deprecation")
+		Date finalDate = new Date(finalAnio, finalMes, finalDia);
+    	
+    	
+        grupos.add(grupo);
+        agregarReserva(grupo, inicialDate, finalDate, IDHabitacion);
+	        
         
-        //int inicialAnio F= frame.getIniclaAnio();
-        //int inicialMes = frame.getInicialMes();
-        //int inicialDia = frame.getInicialDia();
-        //int finalAnio = frame.getfinalAnio();
-        //int finalMes = frame.finalMes();
-        //int finalDia = frame.getFinalDia();
+    }
+
+    public String[] reservaDisponible(int inicialAnio, int inicialMes, int inicialDia, int finalAnio, int finalMes, int finalDia, int canNinos, int canAdultos){
 		
-        
-		
+    	String precioFinal = "";
+    	
         @SuppressWarnings("deprecation")
 		Date inicialDate = new Date(inicialAnio, inicialMes, inicialDia);
         @SuppressWarnings("deprecation")
 		Date finalDate = new Date(finalAnio, finalMes, finalDia);
     	
-        String IDHabitacion = reservaDisponible(inicialDate, finalDate);
-        if (IDHabitacion.equals("")) {
-        	System.out.println("lo siento no hay cupos disponibles");
-        }
-		else if (IDHabitacion.equals("no")){
-			System.out.println("lo siento no hay cupos disponibles");
-		}
-
-        else {
-        	Grupo grupo = new Grupo(IDHabitacion, inicialDate, finalDate);
-        	boolean centinela = true;
-        	while(centinela) {
-        		agregarHuespedGrupo(grupo);
-        		System.out.println("Ingrese una opcion");
-        		System.out.println("1- Agregar otro huesped");
-        		System.out.println("2- Terminar proceso");
-        		int nuevo = Integer.parseInt(input(""));
-        		if (nuevo == 2) {
-        			centinela = false;
-        		}
-        	}
-	        grupos.add(grupo);
-	        agregarReserva(grupo, inicialDate, finalDate, IDHabitacion);
-	        System.out.println("Se ha agregado su reserva");
-	        
-        }
-    }
-
-    private String reservaDisponible(Date inicialDate, Date finalDate){
     	String respuesta = "no";
     	
-    	//int canNinos = frame.getCanNinos;
-    	//int canAdultos = frame.getCanAdultos;
-    	
-    	int canNinos = Integer.parseInt(input("Ingrese la cantidad de niños que ocuparán camas por favor"));
-        int canAdultos = Integer.parseInt(input("Ingrese la cantidad de adultos por favor"));
-        
         for (Habitacion h: habitaciones) {
 			int maxNinos = h.getCapacidadNino();
 			int maxAdultos = h.getCapaciodadAdulto();
@@ -354,32 +331,18 @@ public class Hotel implements Serializable{
 			if (disponible && maxNinos >= canNinos && maxAdultos >= canAdultos) {
 				respuesta = h.getIdHabitacion();
 				float precioIntermedio = h.getPrecioF();
-				float precioFinal = h.calcularPrecioTotal(precioIntermedio, inicialDate, finalDate);
-				System.out.println("El valor de su reserva es: " + precioFinal);
-        		System.out.println("1- Aceptar precio");
-        		System.out.println("2- Cancelar reserva");
-        		int nuevo = Integer.parseInt(input(""));
-        		if (nuevo == 2) {
-        			respuesta = "";
-        		}
+				precioFinal = Float.toString(h.calcularPrecioTotal(precioIntermedio, inicialDate, finalDate));
 				break;
 			}
 		}
         
-        return respuesta;
+        String[] resultado = {respuesta, precioFinal};
+        return resultado;
+        
     }
 
-    private void agregarHuespedGrupo(Grupo grupo){
-    	System.out.println("Por favor ingrese sus datos\n\n\n");
-    	//String nombre = frame.getNombre();
-    	//int cedula = frame.getCedula();
-    	//int edad = frame.getEdad();
-    	//String correo = frame.getCorreo();
-		String nombre = input("Ingrese su nombre");
-		int cedula = Integer.parseInt(input("Ingrese su cedula"));
-		int edad = Integer.parseInt(input("Ingrese su edad"));
-		String correo = input("Ingrese su correo, si no tiene ingrese enter");
-		
+    public void agregarHuespedGrupo(Grupo grupo, String nombre, int cedula, int edad, String correo){
+    	
 		grupo.addHuesped(nombre, cedula, edad, correo);
 		
     }
