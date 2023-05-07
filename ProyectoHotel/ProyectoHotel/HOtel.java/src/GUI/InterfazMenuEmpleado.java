@@ -2,14 +2,12 @@ package GUI;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class InterfazMenuEmpleado extends JFrame{
 
     private PanelNorteEmple panelNorte;
     private PanelCentroEmple panelCentro;
-    private PanelSurLogin panelSur;
+
     
 
     public InterfazMenuEmpleado(){
@@ -27,7 +25,7 @@ public class InterfazMenuEmpleado extends JFrame{
 
         setTitle("Menu Empleados");
         setSize(1000, 750);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
 
     }

@@ -14,7 +14,6 @@ public class InterfazLogin extends JFrame{
     private PanelCentroLogin PanelCentro;
     private PanelSurLogin PanelSur;
     private App app;
-    private Hotel hotel;
 
     public InterfazLogin(){
     	
@@ -22,6 +21,7 @@ public class InterfazLogin extends JFrame{
         PanelNorte = new PanelNorteLogin();
         PanelCentro = new PanelCentroLogin();
         PanelSur = new PanelSurLogin(this);
+
 
         setLayout(new BorderLayout());
 		add(PanelNorte, BorderLayout.NORTH);
@@ -33,18 +33,19 @@ public class InterfazLogin extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 
-
     }
     public void login(int tipo) {
     	String usuario = PanelCentro.getTxtNum1();
     	String contrasena = PanelCentro.getTxtNum2();
-    	boolean ingreso = hotel.seleccionarUsuario(usuario, contrasena, tipo);
+        boolean ingreso = false;
+    	ingreso = App.seleccionarUsuario(usuario, contrasena, tipo);
     	if (ingreso) {
-    		System.out.println("suuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
+    		InterfazMenuAdmin admin = new InterfazMenuAdmin();
     	
     	}
-    	else {
-    		System.out.println("noooooooooooooooooo");
+    	else {    
+    		InterfazMenuEmpleado recep = new InterfazMenuEmpleado();
+
     	}
     }
     

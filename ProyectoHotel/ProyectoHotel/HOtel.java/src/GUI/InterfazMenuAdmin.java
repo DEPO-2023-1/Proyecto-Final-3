@@ -22,7 +22,7 @@ public class InterfazMenuAdmin extends JFrame{
         setSize(new Dimension(1000, 650));
         setVisible(true);
 		setResizable(true);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 
     }

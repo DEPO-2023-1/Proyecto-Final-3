@@ -15,6 +15,10 @@ public class App {
 	public static Hotel hotel;
 	
 	//public static Frame frame;
+	
+	public App() {
+		hotel = new Hotel();
+	}
     
     public void mostrarMenu(int opcion) {
     	
@@ -135,8 +139,12 @@ public class App {
 				System.out.println("Debe seleccionar uno de los números de las opciones.");
 			}
 		}
-}
+    }
 
+    public static boolean seleccionarUsuario(String login, String contraseña, int usuario){
+    	boolean respuesta = hotel.seleccionarUsuario(login, contraseña, usuario);
+    	return respuesta;
+    }
     
 
 
@@ -179,7 +187,7 @@ public class App {
 
 
 
-
+/*
     public static void main(String[] args) throws Exception {
         App aplicacion = new App();
 		
@@ -194,10 +202,10 @@ public class App {
 		hotel = hotel1;
 		}
 		
-    	aplicacion.ejecutarOpciones();
+    	
 		serializarObjeto(hotel);
 		
 	}	
 
-	
+	*/
 }
