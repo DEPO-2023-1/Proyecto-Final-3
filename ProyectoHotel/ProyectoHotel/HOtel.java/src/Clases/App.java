@@ -10,6 +10,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 
+
+
 public class App {
     
 	public static Hotel hotel;
@@ -93,13 +95,13 @@ public class App {
 					
 					else if (usuario == 2) {
 						if (opcion == 1) {
-							hotel.crearReserva();
+							
 						}
 						else if (opcion == 2) {
-							hotel.cancelarReserva();
+							
 						}
 						else if (opcion == 3) {
-							hotel.checkOut();
+							
 						}
 						else if (opcion == 4) {
 							hotel.consultarInventario();
@@ -146,8 +148,35 @@ public class App {
     	return respuesta;
     }
     
-
-
+    public String[] disponible(int inicialAnio, int inicialMes, int inicialDia, int finalAnio, int finalMes, int finalDia, int canNinos, int canAdultos) {
+    	String[] respuesta = hotel.reservaDisponible(inicialAnio, inicialMes, inicialDia, finalAnio, finalMes, finalDia, canNinos, canAdultos);
+    	return respuesta;
+    }
+    
+    public Grupo newGrupo(int inicialAnio, int inicialMes, int inicialDia, int finalAnio, int finalMes, int finalDia, String IDHabitacion) {
+   	 Grupo grupo = hotel.newGrupo(inicialAnio, inicialMes, inicialDia, finalAnio, finalMes, finalDia, IDHabitacion);
+   	 return grupo;
+    }
+    
+    public void agregarHuespedGrupo(Grupo grupo, String nombre, int cedula, int edad, String correo){
+    	hotel.agregarHuespedGrupo(grupo, nombre, cedula, edad, correo);
+    }
+    
+    public void crearReserva(Grupo grupo, int inicialAnio, int inicialMes, int inicialDia, int finalAnio, int finalMes, int finalDia, String IDHabitacion) {
+    	hotel.crearReserva(grupo, inicialAnio, inicialMes, inicialDia, finalAnio, finalMes, finalDia, IDHabitacion);
+    }
+    
+    public void cancelarReserva(int inicialAnio, int inicialMes, int inicialDia, int finalAnio, int finalMes, int finalDia, String IDHabitacion) {
+    	hotel.cancelarReserva(inicialAnio, inicialMes, inicialDia, finalAnio, finalMes, finalDia, IDHabitacion);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     public String input(String mensaje)
 	{
 		try
@@ -163,7 +192,7 @@ public class App {
 		}
 		return null;
 	}
-
+    
 
 	public static void serializarObjeto(Hotel hotel) {
         try (FileOutputStream fos = new FileOutputStream("hotel.bin");

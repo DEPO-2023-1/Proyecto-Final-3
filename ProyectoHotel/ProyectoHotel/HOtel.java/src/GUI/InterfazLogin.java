@@ -3,6 +3,7 @@ package GUI;
 import javax.swing.JFrame;
 
 import Clases.App;
+import Clases.Grupo;
 import Clases.Hotel;
 
 import java.awt.*;
@@ -45,7 +46,7 @@ public class InterfazLogin extends JFrame{
                 InterfazMenuAdmin admin = new InterfazMenuAdmin();
             }
             if (tipo == 2){
-                InterfazMenuRecep recep = new InterfazMenuRecep();
+                InterfazMenuRecep recep = new InterfazMenuRecep(this);
             }
             if (tipo == 3){
                 InterfazMenuEmpleado admin = new InterfazMenuEmpleado();
@@ -55,6 +56,29 @@ public class InterfazLogin extends JFrame{
     	
     	}
     }
+    
+    public String[] disponible(int inicialAnio, int inicialMes, int inicialDia, int finalAnio, int finalMes, int finalDia, int canNinos, int canAdultos) {
+    	String[] respuesta = app.disponible(inicialAnio, inicialMes, inicialDia, finalAnio, finalMes, finalDia, canNinos, canAdultos);
+    	return respuesta;
+    }
+    
+    public Grupo newGrupo(int inicialAnio, int inicialMes, int inicialDia, int finalAnio, int finalMes, int finalDia, String IDHabitacion) {
+    	 Grupo grupo = app.newGrupo(inicialAnio, inicialMes, inicialDia, finalAnio, finalMes, finalDia, IDHabitacion);
+    	 return grupo;
+    }
+    
+    public void agregarHuespedGrupo(Grupo grupo, String nombre, int cedula, int edad, String correo){
+    	app.agregarHuespedGrupo(grupo, nombre, cedula, edad, correo);
+    }
+    
+    public void crearReserva(Grupo grupo, int inicialAnio, int inicialMes, int inicialDia, int finalAnio, int finalMes, int finalDia, String IDHabitacion) {
+    	app.crearReserva(grupo, inicialAnio, inicialMes, inicialDia, finalAnio, finalMes, finalDia, IDHabitacion);
+    }
+    
+    public void cancelarReserva(int inicialAnio, int inicialMes, int inicialDia, int finalAnio, int finalMes, int finalDia, String IDHabitacion) {
+    	app.cancelarReserva(inicialAnio, inicialMes, inicialDia, finalAnio, finalMes, finalDia, IDHabitacion);
+    }
+    
     
     public static void main(String [] args) {
         InterfazLogin ip = new InterfazLogin();

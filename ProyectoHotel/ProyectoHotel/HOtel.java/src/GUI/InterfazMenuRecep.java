@@ -10,10 +10,11 @@ public class InterfazMenuRecep extends JFrame{
 	
 	private PanelBotonRecep boton;
 	private PanelNorteLogin titulo;
+	private InterfazLogin interfaz;
 
-    public InterfazMenuRecep(){
-
-        boton = new PanelBotonRecep();
+    public InterfazMenuRecep(InterfazLogin interfaz){
+    	this.interfaz = interfaz;
+        boton = new PanelBotonRecep(interfaz);
         titulo = new PanelNorteLogin();
         
         setLayout(new BorderLayout());
@@ -30,6 +31,7 @@ public class InterfazMenuRecep extends JFrame{
         
         
     }
+    
 	
     
 }
