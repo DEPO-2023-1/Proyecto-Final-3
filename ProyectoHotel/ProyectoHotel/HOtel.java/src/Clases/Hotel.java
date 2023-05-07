@@ -213,7 +213,6 @@ public class Hotel implements Serializable{
 					lista.add(h.getVista());
 					lista.add(h.getPrecioF());
 					
-					
 					if (opcion == 1) {
 						System.out.println(h.getUbicacion());
 						
