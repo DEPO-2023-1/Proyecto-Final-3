@@ -16,7 +16,7 @@ public class InterfazMenuEmpleado extends JFrame{
 
         panelNorte = new PanelNorteEmple();
         panelCentro = new PanelCentroEmple();
-        panelSur = new PanelSurLogin();
+
 
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
