@@ -11,14 +11,15 @@ public class InterfazMenuAdmin extends JFrame{
     private PanelSurAdmin PanelSur;
 
     public InterfazMenuAdmin(){
-        setSize(new Dimension(1000, 650));
+
         PanelNorte = new PanelNorteAdmin();
         PanelSur = new PanelSurAdmin();
 
+        setLayout(new BorderLayout());
 		add(PanelNorte, BorderLayout.NORTH);
-		add(PanelSur, BorderLayout.SOUTH);
+		add(PanelSur, BorderLayout.CENTER);
 
-
+        setSize(new Dimension(1000, 650));
         setVisible(true);
 		setResizable(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
