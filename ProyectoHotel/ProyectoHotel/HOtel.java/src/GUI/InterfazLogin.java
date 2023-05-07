@@ -84,6 +84,18 @@ public class InterfazLogin extends JFrame{
     	return respuesta;
     }
     
+    public String consultarInventario(int opcion, String producto) {
+    	String respuesta = app.consultarInventario(opcion, producto);
+    	return respuesta;
+    }
+    
+    public String consultarHabitacion(int opcion, String IDHabitacion, int inicialAnio, int inicialMes, int inicialDia) {
+    	String respuesta = app.consultarHabitacion(opcion, IDHabitacion, inicialAnio, inicialMes, inicialDia);
+    	return respuesta;
+    }
+    
+    
+    
     
     public static void main(String [] args) {
         InterfazLogin ip = new InterfazLogin();

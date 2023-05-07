@@ -17,7 +17,7 @@ public class Hotel implements Serializable{
     private ArrayList<Habitacion> habitaciones;
     private ArrayList<Inventario> inventarios;
     private ArrayList<MenuRestaurante> productos;
-	private String IDHabitacion;
+ 
     
   //public static Frame frame;
 
@@ -154,28 +154,11 @@ public class Hotel implements Serializable{
         System.out.println("Proceso exitoso");
     }
 
-	public ArrayList<Object> consultarHabitacion(){
+	public String consultarHabitacion(int opcion, String IDHabitacion, int inicialAnio, int inicialMes, int inicialDia){
 		
-		//String IDHabitacion = frame.getIDHabitacion();
-		
-		String IDHabitacion = input("Ingrese el ID de la habitacion");
+		String resultado = "No se encontro la habitacion";    	
 
-		System.out.println("\nIngrese la opcion que quiere consultar");
-    	System.out.println("1- Ubicacion");
-    	System.out.println("2- Tipo");
-    	System.out.println("3- Capacidad maxima de niños");
-		System.out.println("4- Capacidad maxima de adultos");
-		System.out.println("5- Balcon");
-		System.out.println("6- Cocina");
-		System.out.println("7- Vista");
-		System.out.println("8- Precio");
-		System.out.println("9- Reservadas en una determinada fecha");
-		
-		ArrayList<Object> lista = new ArrayList<>();
-		
-		int opcion = Integer.parseInt(input(""));
-
-		if (opcion == 9){
+		if (opcion == 1){
 			for(Grupo g: grupos) {
 				String nombre = g.getIDHabitacion();
 				if (nombre.equals(IDHabitacion)) {
@@ -183,107 +166,70 @@ public class Hotel implements Serializable{
 					Date reservaInicio = g.getReservaInicio();
 					Date reservaFinal = g.getReservaFinal();
 
-					int inicialAnio = Integer.parseInt(input("Ingrese el año del dia de la reserva"));
-			        int inicialMes = Integer.parseInt(input("Ingrese el mes de día de la reserva"));
-			        int inicialDia = Integer.parseInt(input("Ingrese el día de la reserva"));
-
 			        @SuppressWarnings("deprecation")
 					Date inicialDate = new Date(inicialAnio, inicialMes, inicialDia);
 
 			        if ((reservaInicio.before(inicialDate)) && (reservaFinal.after(inicialDate))) {
 			        	ArrayList<String> nombresList = g.getNombresHuespedes();
-						System.out.println("Los huespeds que ocupan esta habitacion en esta fecha son:");
+						resultado = "Los huespeds que ocupan esta habitacion en esta fecha son:\n";
 			        	for(String s: nombresList) {
-			        		System.out.println(s);
+			        		resultado += "\n" + s ;
 			        	}
 			        }
+			        
 				}
 			}
 		}
 
-		else {
+		else if (opcion == 2){
 			for (Habitacion h:habitaciones) {
 				String nombre = h.getIdHabitacion();
 				if (nombre.equals(IDHabitacion)) {
-					lista.add(h.getUbicacion());
-					lista.add(h.getTipo());
-					lista.add(h.getCapacidadNino());
-					lista.add(h.getCapaciodadAdulto());
-					lista.add(h.getBalcon());
-					lista.add(h.getCocina());
-					lista.add(h.getVista());
-					lista.add(h.getPrecioF());
-					
-					if (opcion == 1) {
-						System.out.println(h.getUbicacion());
-						
-					}
-					else if (opcion == 2) {
-						System.out.println(h.getTipo());
-					}
-					else if (opcion == 3) {
-						System.out.println(h.getCapacidadNino());
-					}
-					else if (opcion == 4) {
-						System.out.println(h.getCapaciodadAdulto());
-					}
-					else if (opcion == 5) {
-						System.out.println(h.getBalcon());
-					}
-					else if (opcion == 6) {
-						System.out.println(h.getCocina());
-					}
-					else if (opcion == 7) {
-						System.out.println(h.getVista());
-					}
-					else if (opcion == 8) {
-						System.out.println(h.getPrecioF());
-					}
-				}
+					resultado = "Esta es la informacion de la habitacion: ";
+					resultado += "\nUbicacion-----------------------------" + h.getUbicacion();
+					resultado += "\nTipo----------------------------------" + h.getTipo();
+					resultado += "\nCapacidad Niños-----------------------" + h.getCapacidadNino();
+					resultado += "\nCapacidad Adultos---------------------" + h.getCapaciodadAdulto();
+					resultado += "\nBalcon--------------------------------" + h.getBalcon();
+					resultado += "\nCocina--------------------------------" + h.getCocina();
+					resultado += "\nVista---------------------------------" + h.getVista();
+					resultado += "\nPrecio--------------------------------" + h.getPrecioF();
+				}	
 			}
 		}
 
-		return lista;
+		return resultado;
 
 	}
 
-	public ArrayList<Inventario> consultarInventario(){
+	public String consultarInventario(int opcion, String producto){
 
-		System.out.println("\nIngrese la opcion que quiere consultar");
-    	System.out.println("1- Todo el inventario");
-    	System.out.println("2- La cantidad de un producto");
+		String resultado =  "";
     	
-    	ArrayList<Inventario> lista = new ArrayList<>();
-    	
-    	//int opcion = frame.getOpcion;
-    	int opcion = Integer.parseInt(input(""));
 
     	if (opcion == 1) {
     		
-    		System.out.println("\nEl inventario es el siguiente:\n");
-    		System.out.println("\nProducto-------------cantidad\n");
+    		resultado += "\nEl inventario es el siguiente:\n"
+    				+"\nProducto-------------cantidad\\n";
+
     		for (Inventario i: inventarios) {
-    			lista.add(i);
     			String nombre = i.getProducto();
     			int cantidad = i.getCantidad();
-    			System.out.println(nombre+"-------------"+cantidad);
+    			resultado += nombre+"-------------"+cantidad;
     		}
 
     	}
 
     	else if (opcion == 2) {
-    		String producto = input("Ingrese el nombre del producto");
-    		System.out.println("La cantidad de su producto es");
     		for (Inventario i: inventarios) {
     			String nombre = i.getProducto();
     			if (nombre.equals(producto)) {
-    				lista.add(i);
     				int cantidad = i.getCantidad();
-    				System.out.println("La cantidad de su producto es: "+cantidad);
+    				resultado += "La cantidad de su producto es: "+cantidad;
     			}
     		}
     	}
-    	return lista;
+    	return resultado;
 
 	}
 	
@@ -386,7 +332,6 @@ public class Hotel implements Serializable{
     			}
             }
     	}
-    	System.out.println(respuesta);
     
     }
 
@@ -395,7 +340,7 @@ public class Hotel implements Serializable{
         float valorFinal = 0;
         
         
-        String respuesta = "";
+        String respuesta = "Hubo un error";
         
         for(Habitacion h: habitaciones){
             if(id.equals(h.getIdHabitacion())){
