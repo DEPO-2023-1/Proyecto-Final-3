@@ -73,8 +73,8 @@ public class PanelSurAdmin extends JPanel implements ActionListener{
 			FrameCargaManual cargaManual = new FrameCargaManual(interfaz);
 		}
 		if (grito.equals(actualizar)) {
+			JOptionPane.showMessageDialog(interfaz,"Esta opción no está disponible, lo sentimos");
 			
-			String nose = JOptionPane.showInputDialog("Ingrese la ruta del archivo:");
 		}
 		if (grito.equals(salir)) {
 			System.exit(0);
