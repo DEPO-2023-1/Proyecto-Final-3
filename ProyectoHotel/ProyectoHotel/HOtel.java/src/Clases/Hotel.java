@@ -63,18 +63,18 @@ public class Hotel implements Serializable{
 		return result;
     }
 
-    public void agregarConsumo(){
+    public String [] agregarConsumo(String IDHabitacion, String servicio, int menu_o_servicio){
     	int valor=0;
     	//String IDHabitacion = frame.getIDHabitacion();
     	//String servicio = frame.getServicio();
     	// int menu_o_servicio = frame.getTipo();
-    	String IDHabitacion = input("Ingrese la habitacion");
-    	String servicio = input("Ingrese el servcio consumido");
-    	int menu_o_servicio = Integer.parseInt(input("Ingrese 1 si su servicio es de ¨Menu Restaurante¨, de lo contrario ingrese 2 si su servicio es de otra clase"));
+    	//String IDHabitacion = input("Ingrese la habitacion");
+    	//String servicio = input("Ingrese el servicio consumido");
+    	//int menu_o_servicio = Integer.parseInt(input("Ingrese 1 si su servicio es de ¨Menu Restaurante¨, de lo contrario ingrese 2 si su servicio es de otra clase"));
     	
     	
     	
-        factura(IDHabitacion, servicio, menu_o_servicio);
+        String [] resultado = factura(IDHabitacion, servicio, menu_o_servicio);
         for (Habitacion h: habitaciones) {
 			String nombre = h.getIdHabitacion();
 			if (nombre.equals(IDHabitacion)) {
@@ -94,7 +94,7 @@ public class Hotel implements Serializable{
                 break;
             }
         }
-    	
+    	return resultado;
     	
     }
     public void agregarPago(){
@@ -129,13 +129,15 @@ public class Hotel implements Serializable{
         }
     }
     
-    public void factura(String IDHabitacion, String servicio, int menu_o_servicio) {
-        float valor=0;
+    public String[] factura(String IDHabitacion, String servicio, int menu_o_servicio) {
+        
+		float valor=0;
+		/*
     	System.out.println("Gracias por su compra");
         System.out.println("-----------------------------------------------------\n");
         System.out.println("Detalles de compra:\n");
         System.out.println("Habitacion........................................"+IDHabitacion+"\n");
-        System.out.println("Servicio..........................................Valor");
+        System.out.println("Servicio..........................................Valor");*/
         if(menu_o_servicio==1){
             for(MenuRestaurante m: productos){
                 if(servicio.equals(m.getNombre())){
@@ -150,8 +152,10 @@ public class Hotel implements Serializable{
             }
         }
         String valors = Float.toString(valor);
-        System.out.println(servicio+".........................................."+valors);
-        System.out.println("Proceso exitoso");
+        //System.out.println(servicio+".........................................."+valors);
+        //System.out.println("Proceso exitoso");
+		String[] resultado = {valors, IDHabitacion};
+		return resultado;
     }
 
 	public String consultarHabitacion(int opcion, String IDHabitacion, int inicialAnio, int inicialMes, int inicialDia){

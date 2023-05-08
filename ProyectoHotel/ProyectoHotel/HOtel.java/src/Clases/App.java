@@ -95,7 +95,6 @@ public class App {
 					
 					else if (usuario == 2) {
 						if (opcion == 1) {
-							
 						}
 						else if (opcion == 2) {
 							
@@ -182,6 +181,11 @@ public class App {
     	String respuesta = hotel.consultarHabitacion(opcion, IDHabitacion, inicialAnio, inicialMes, inicialDia);
     	return respuesta;
     }
+	public String[] agregarConsumo(String habitacion, String servicio, int tipo){
+		String [] resultado = hotel.agregarConsumo(habitacion, servicio, tipo);
+		return resultado;
+	}
+	
     
     
     
