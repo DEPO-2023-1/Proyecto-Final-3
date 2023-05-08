@@ -83,7 +83,7 @@ public class App {
 					if (usuario == 1) {
 						
 						if (opcion == 1) {
-							hotel.cargarHotel();
+							//hotel.cargarHotel();
 						}
 						else if (opcion == 2) {
 							hotel.cargarHotelManual();
@@ -174,7 +174,20 @@ public class App {
     	String respuesta = hotel.checkOut(IDHabitacion);
     	return respuesta;
     }
-    
+	public void cargarHotel(String habitaciones, String inventario, String servicio, String restaurante, String temporada){
+		try {
+			hotel.cargarHotel(habitaciones, inventario, servicio, restaurante, temporada);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void cargarHabitacionesManual(String idHabitacion,String tipo,String ubicacion, int capacidadNino, int capaciodadAdulto, Boolean balcon, Boolean cocina, Boolean vista, float PrecioI){
+		hotel.cargarHabitacionesManual(idHabitacion, tipo, ubicacion, capacidadNino, capaciodadAdulto, balcon, cocina, vista, PrecioI);
+	}
+    public void cargarServiciosManual(String tipo, String nombre, float precio, String horaInicio, String horaFinal){
+		hotel.cargarServiciosManual(tipo, nombre, precio, horaInicio, horaFinal);
+	}
     
     
     

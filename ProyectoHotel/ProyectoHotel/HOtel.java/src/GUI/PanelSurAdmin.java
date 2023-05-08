@@ -13,6 +13,7 @@ public class PanelSurAdmin extends JPanel implements ActionListener{
 	private static final String manual = "CARGAR INFO MANUAL";
 	private static final String actualizar = "ACTUALIZARINFO";
 	private static final String salir = "SALIR";
+	private InterfazLogin interfaz;
 
 	
 	private JButton archivosButton;
@@ -21,7 +22,8 @@ public class PanelSurAdmin extends JPanel implements ActionListener{
 	private JButton salirButton;
 	
 	
-	public PanelSurAdmin() {
+	public PanelSurAdmin(InterfazLogin interfaz) {
+		this.interfaz=interfaz;
 		
 		setLayout(null);
 		
@@ -58,19 +60,24 @@ public class PanelSurAdmin extends JPanel implements ActionListener{
 		String grito = e.getActionCommand();
 		if (grito.equals(archivos)) {
 			
-			String valor = JOptionPane.showInputDialog("Ingrese la ruta del archivo:");
-			
+			String habitaciones = JOptionPane.showInputDialog("Ingrese la ruta de archivo con la informacion de las habitaciones");
+			String inventario = JOptionPane.showInputDialog("Ingrese la ruta de archivo con la informacion del inventario");
+    		String Servicio = JOptionPane.showInputDialog("Ingrese la ruta de archivo con la informacion de los servicios");
+    		String restaurante = JOptionPane.showInputDialog("Ingrese la ruta de archivo con la informacion de los productos del restaurante");
+    		String temporada = JOptionPane.showInputDialog("Ingrese la ruta de archivo con la informacion de las temporada");
+			interfaz.cargarHotel(habitaciones, inventario, Servicio, restaurante, temporada);
+			JOptionPane.showMessageDialog(interfaz,"Se cargaron los archivos con exito");
 		}
 		if (grito.equals(manual)) {
 			
-			String algo = JOptionPane.showInputDialog("hola");
+			FrameCargaManual cargaManual = new FrameCargaManual(interfaz);
 		}
 		if (grito.equals(actualizar)) {
 			
 			String nose = JOptionPane.showInputDialog("Ingrese la ruta del archivo:");
 		}
 		if (grito.equals(salir)) {
-			String Stringsalir = JOptionPane.showInputDialog("Seguro?");
+			System.exit(0);
 		}
 		
 		

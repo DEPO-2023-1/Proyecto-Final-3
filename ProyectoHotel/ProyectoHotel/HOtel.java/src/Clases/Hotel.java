@@ -424,34 +424,20 @@ public class Hotel implements Serializable{
 
     }
 
-    public void cargarHotel() throws IOException{
-    	
-    	String habitaciones = input("Ingrese la ruta de archivo con la informacion de las habitaciones");
-    	String inventario = input("Ingrese la ruta de archivo con la informacion del inventario");
-    	String Servicio = input("Ingrese la ruta de archivo con la informacion de los servicios");
-    	String restaurante = input("Ingrese la ruta de archivo con la informacion de los productos del restaurante");
-    	String temporada = input("Ingrese la ruta de archivo con la informacion de las temporada");
+    public void cargarHotel(String habitaciones, String inventario, String servicio, String restaurante, String temporada) throws IOException{
+
     	
     	cargarHabitacion(habitaciones);
     	cargarInventario(inventario);
-    	cargarServicio(Servicio);
+    	cargarServicio(servicio);
     	cargarRestaurante(restaurante);
     	cargarTemporada(temporada);
-
-		System.out.println("La carga ha sido exitosa");
+		
     	
     }
 
-    public void cargarHotelManual(){
-
-		System.out.println("Ingrese la opcion que quiere cargar");
-		System.out.println("1- Cargar informaicon habitaciones");
-		System.out.println("2- Cargar informaicon servicios");
-		
-		int opcion = Integer.parseInt(input(""));
-
-		if (opcion == 1) {
-			
+    public void cargarHabitacionesManual(String idHabitacion,String tipo,String ubicacion, int capacidadNino, int capaciodadAdulto, Boolean balcon, Boolean cocina, Boolean vista, float PrecioI){
+	
 			//String idHabitacion = frame.getIDHabitacion();
 			//String tipo = frame.getTipo();
 			//String ubicacion = frame.getHubicacion();
@@ -461,16 +447,13 @@ public class Hotel implements Serializable{
 			//String cocina = frame.getCocina();
 			//String vista = frame.getVista();
 			//String PrecioI = frame.getPrecioI();
-			
-			String idHabitacion = input("Ingrese el ID de la habitacion");
-			String tipo = input("Ingrese el tipo de la habitacion");
-			String ubicacion = input("Ingrese la ubicacion de la habitacion");
-			int capacidadNino = Integer.parseInt(input("Ingrese la cantidad maxima de niños de la habitacion"));
-			int capaciodadAdulto = Integer.parseInt(input("Ingrese la cantidad maxima de adultos de la habitacion"));
-			Boolean balcon = Boolean.parseBoolean(input("Ingrese true si la habitacion tiene Balcon, si no ingrese false"));
-			Boolean cocina = Boolean.parseBoolean(input("Ingrese true si la habitacion tiene Cocina, si no ingrese false"));
-			Boolean vista = Boolean.parseBoolean(input("Ingrese true si la habitacion tiene Vista, si no ingrese false"));
-			float PrecioI = Float.parseFloat(input("Ingrese el precio base de la habitacion"));
+			//String ubicacion = input("Ingrese la ubicacion de la habitacion");
+			//int capacidadNino = Integer.parseInt(input("Ingrese la cantidad maxima de niños de la habitacion"));
+			//int capaciodadAdulto = Integer.parseInt(input("Ingrese la cantidad maxima de adultos de la habitacion"));
+			//Boolean balcon = Boolean.parseBoolean(input("Ingrese true si la habitacion tiene Balcon, si no ingrese false"));
+			//Boolean cocina = Boolean.parseBoolean(input("Ingrese true si la habitacion tiene Cocina, si no ingrese false"));
+			//Boolean vista = Boolean.parseBoolean(input("Ingrese true si la habitacion tiene Vista, si no ingrese false"));
+			//float PrecioI = Float.parseFloat(input("Ingrese el precio base de la habitacion"));
 
 			if (tipo.equals("Standar")) {
 				Standard habitacion = new Standard(idHabitacion, tipo, ubicacion, capacidadNino,
@@ -489,22 +472,22 @@ public class Hotel implements Serializable{
 						capaciodadAdulto, balcon, cocina, vista, PrecioI);
 				habitaciones.add(habitacion);
 			}
-		}
+	}
 
-		else if (opcion == 2) {
+		
 			
-			
+	public void cargarServiciosManual(String tipo, String nombre, float precio, String horaInicio, String horaFinal){		
 			//String tipo = frame.getTipo();
 			//String nombre = frame.getNombre();
 			//String precio = frame.getPrecio);
 			//String horaInicio = frame.getHoraInicio();
 			//String horaFinal = frame.getHoraFinal();
 			
-			String tipo = input("Ingrese si es menu del comedor o del servicio a la habitacion");
-			String nombre = input("Ingrese el nombre del producto");
-			float precio = Float.parseFloat(input("Ingrese el precio base del producto"));
-			String horaInicio = input("Ingrese el la hora de inicio de disponibilidad del producto");
-			String horaFinal = input("Ingrese el la hora final de disponibilidad del producto");
+			//String tipo = input("Ingrese si es menu del comedor o del servicio a la habitacion");
+			//String nombre = input("Ingrese el nombre del producto");
+			//float precio = Float.parseFloat(input("Ingrese el precio base del producto"));
+			//String horaInicio = input("Ingrese el la hora de inicio de disponibilidad del producto");
+			//String horaFinal = input("Ingrese el la hora final de disponibilidad del producto");
 
 
 			if (tipo.equals("Comedor")) {
@@ -518,7 +501,7 @@ public class Hotel implements Serializable{
 			}
 
 		}
-	}
+	
 
     public void actualizarInformacion(){
 

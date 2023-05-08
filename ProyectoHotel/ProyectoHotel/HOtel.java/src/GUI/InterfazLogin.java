@@ -43,7 +43,7 @@ public class InterfazLogin extends JFrame{
 
     	if (ingreso) {
             if (tipo == 1){
-                InterfazMenuAdmin admin = new InterfazMenuAdmin();
+                InterfazMenuAdmin admin = new InterfazMenuAdmin(this);
             }
             if (tipo == 2){
                 InterfazMenuRecep recep = new InterfazMenuRecep(this);
@@ -83,7 +83,15 @@ public class InterfazLogin extends JFrame{
     	String respuesta = app.checkOut(IDHabitacion);
     	return respuesta;
     }
-    
+    public void cargarHotel(String habitaciones, String inventario, String servicio, String restaurante, String temporada){
+        app.cargarHotel(habitaciones, inventario, servicio, restaurante, temporada);
+    }
+    public void cargarHabitacionesManual(String idHabitacion,String tipo,String ubicacion, int capacidadNino, int capaciodadAdulto, Boolean balcon, Boolean cocina, Boolean vista, float PrecioI){
+        app.cargarHabitacionesManual(idHabitacion, tipo, ubicacion, capacidadNino, capaciodadAdulto, balcon, cocina, vista, PrecioI);
+    }
+    public void cargarServiciosManual(String tipo, String nombre, float precio, String horaInicio, String horaFinal){
+        app.cargarServiciosManual(tipo, nombre, precio, horaInicio, horaFinal);
+    }
     
     public static void main(String [] args) {
         InterfazLogin ip = new InterfazLogin();
