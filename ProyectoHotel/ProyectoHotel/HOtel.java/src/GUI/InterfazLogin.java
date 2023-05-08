@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 
 import Clases.App;
 import Clases.Grupo;
-
+import Clases.Hotel;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -40,6 +40,8 @@ public class InterfazLogin extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 
+        JOptionPane.showMessageDialog(null, "Usuario: admin, Contrasenia: admin \n Usuario: empleado, Contrasenia: empleado \n Usuario: recepcionista, Contrasenia: recepcionista", "importante", 1, null);
+
     }
     public void login(int tipo) {
     	String usuario = PanelCentro.getTxtNum1();
@@ -49,13 +51,13 @@ public class InterfazLogin extends JFrame{
 
     	if (ingreso) {
             if (tipo == 1){
-                InterfazMenuAdmin admin = new InterfazMenuAdmin();
+                InterfazMenuAdmin admin = new InterfazMenuAdmin(this);
             }
             if (tipo == 2){
                 InterfazMenuRecep recep = new InterfazMenuRecep(this);
             }
             if (tipo == 3){
-                InterfazMenuEmpleado admin = new InterfazMenuEmpleado();
+                InterfazMenuEmpleado admin = new InterfazMenuEmpleado(this);
             }
     		
             
@@ -89,6 +91,15 @@ public class InterfazLogin extends JFrame{
     	String respuesta = app.checkOut(IDHabitacion);
     	return respuesta;
     }
+    public void cargarHotel(String habitaciones, String inventario, String servicio, String restaurante, String temporada){
+        app.cargarHotel(habitaciones, inventario, servicio, restaurante, temporada);
+    }
+    public void cargarHabitacionesManual(String idHabitacion,String tipo,String ubicacion, int capacidadNino, int capaciodadAdulto, Boolean balcon, Boolean cocina, Boolean vista, float PrecioI){
+        app.cargarHabitacionesManual(idHabitacion, tipo, ubicacion, capacidadNino, capaciodadAdulto, balcon, cocina, vista, PrecioI);
+    }
+    public void cargarServiciosManual(String tipo, String nombre, float precio, String horaInicio, String horaFinal){
+        app.cargarServiciosManual(tipo, nombre, precio, horaInicio, horaFinal);
+    }
     
     public String consultarInventario(int opcion, String producto) {
     	String respuesta = app.consultarInventario(opcion, producto);
@@ -98,6 +109,11 @@ public class InterfazLogin extends JFrame{
     public String consultarHabitacion(int opcion, String IDHabitacion, int inicialAnio, int inicialMes, int inicialDia) {
     	String respuesta = app.consultarHabitacion(opcion, IDHabitacion, inicialAnio, inicialMes, inicialDia);
     	return respuesta;
+    }
+
+    public String[] agregarConsumo(String habitacion, String servicio, int tipo){
+        String [] resultado = app.agregarConsumo(habitacion, servicio, tipo);
+        return resultado;
     }
     
     

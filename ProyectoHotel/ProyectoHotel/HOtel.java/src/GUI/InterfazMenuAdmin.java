@@ -9,11 +9,13 @@ public class InterfazMenuAdmin extends JFrame{
 
     private PanelNorteAdmin PanelNorte;
     private PanelSurAdmin PanelSur;
+    private InterfazLogin interfaz;
 
-    public InterfazMenuAdmin(){
+    public InterfazMenuAdmin(InterfazLogin interfaz){
 
+        this.interfaz=interfaz;
         PanelNorte = new PanelNorteAdmin();
-        PanelSur = new PanelSurAdmin();
+        PanelSur = new PanelSurAdmin(interfaz);
 
         setLayout(new BorderLayout());
 		add(PanelNorte, BorderLayout.NORTH);

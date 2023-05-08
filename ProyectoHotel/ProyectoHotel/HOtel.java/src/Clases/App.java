@@ -84,7 +84,7 @@ public class App {
 					if (usuario == 1) {
 						
 						if (opcion == 1) {
-							hotel.cargarHotel();
+							//hotel.cargarHotel();
 						}
 						else if (opcion == 2) {
 							hotel.cargarHotelManual();
@@ -96,7 +96,6 @@ public class App {
 					
 					else if (usuario == 2) {
 						if (opcion == 1) {
-							
 						}
 						else if (opcion == 2) {
 							
@@ -183,11 +182,33 @@ public class App {
     	String respuesta = hotel.consultarHabitacion(opcion, IDHabitacion, inicialAnio, inicialMes, inicialDia);
     	return respuesta;
     }
+<<<<<<< HEAD
     
     public ArrayList<Integer> listaFechas(){
     	return hotel.listaFechas();
     }
     
+=======
+	public String[] agregarConsumo(String habitacion, String servicio, int tipo){
+		String [] resultado = hotel.agregarConsumo(habitacion, servicio, tipo);
+		return resultado;
+	}
+	
+	public void cargarHotel(String habitaciones, String inventario, String servicio, String restaurante, String temporada){
+		try {
+			hotel.cargarHotel(habitaciones, inventario, servicio, restaurante, temporada);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void cargarHabitacionesManual(String idHabitacion,String tipo,String ubicacion, int capacidadNino, int capaciodadAdulto, Boolean balcon, Boolean cocina, Boolean vista, float PrecioI){
+		hotel.cargarHabitacionesManual(idHabitacion, tipo, ubicacion, capacidadNino, capaciodadAdulto, balcon, cocina, vista, PrecioI);
+	}
+    public void cargarServiciosManual(String tipo, String nombre, float precio, String horaInicio, String horaFinal){
+		hotel.cargarServiciosManual(tipo, nombre, precio, horaInicio, horaFinal);
+	}
+>>>>>>> 8866295826a6e0f31eeddb79213b92a2531e95a7
     
     
     
