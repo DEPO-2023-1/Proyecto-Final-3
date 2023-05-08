@@ -138,13 +138,39 @@ public class PanelBotonRecep extends JPanel implements ActionListener{
 			JOptionPane.showMessageDialog(interfaz,checkOut);			
 		}
 		if (grito.equals(ConInventario)) {
-			JOptionPane.showInputDialog("hola");
 			
+			String opcion = JOptionPane.showInputDialog("Escriba <todo> si quiere conocer todo el inventario \n"
+					+ "no <individual> si solo quiere conocer un solo producto");
+			if (opcion.equals("todo")) {
+				String inventario = interfaz.consultarInventario(1,"");
+				JOptionPane.showMessageDialog(interfaz,inventario);
+				
+			}
 			
+			else if (opcion.equals("individual")) {
+				String producto = JOptionPane.showInputDialog("Ingrese el producto");
+				String inventario = interfaz.consultarInventario(2, producto);
+				JOptionPane.showMessageDialog(interfaz,inventario);
+			}
 			
 		}
 		if (grito.equals(ConHabitacion)) {
-			JOptionPane.showInputDialog("hola");
+			String IDHabitacion = JOptionPane.showInputDialog("Ingrese el ID de la habitación");
+			String opcion = JOptionPane.showInputDialog("Escriba <1> si quiere consultar una reserva en un día en espesifico \n"
+					+ "o <2> si quiere consultar el toda la información de la habitacion\n");
+			if (opcion.equals("1")) {
+				int inicialAnio = Integer.parseInt(JOptionPane.showInputDialog("Año inicio de reserva"));
+				int inicialMes = Integer.parseInt(JOptionPane.showInputDialog("Mes inicio de reserva"));
+				int inicialDia = Integer.parseInt(JOptionPane.showInputDialog("Día inicio de reserva"));
+				String respuesta = interfaz.consultarHabitacion(1,IDHabitacion, inicialAnio, inicialMes, inicialDia);
+				JOptionPane.showMessageDialog(interfaz,respuesta);
+			}
+			else if (opcion.equals("2")) {
+				String respuesta = interfaz.consultarHabitacion(1,IDHabitacion, 0,0,0);
+				JOptionPane.showMessageDialog(interfaz,respuesta);
+			}
+			
+			
 		}
 		
 	}

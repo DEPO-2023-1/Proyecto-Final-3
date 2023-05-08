@@ -95,7 +95,6 @@ public class App {
 					
 					else if (usuario == 2) {
 						if (opcion == 1) {
-							
 						}
 						else if (opcion == 2) {
 							
@@ -104,19 +103,18 @@ public class App {
 							
 						}
 						else if (opcion == 4) {
-							hotel.consultarInventario();
+							
 						}
 						else if (opcion == 5) {
-							hotel.consultarHabitacion();
+							
 						}
 					}
 					
 					else if (usuario == 3) {
 						if (opcion == 1) {
-							hotel.agregarConsumo();
-						}
+													}
 						else if (opcion == 2) {
-							hotel.agregarPago();
+							
 						}
 					}
 					
@@ -174,6 +172,20 @@ public class App {
     	String respuesta = hotel.checkOut(IDHabitacion);
     	return respuesta;
     }
+    
+    public String consultarInventario(int opcion, String producto) {
+    	String respuesta = hotel.consultarInventario(opcion, producto);
+    	return respuesta;
+    }
+    public String consultarHabitacion(int opcion, String IDHabitacion, int inicialAnio, int inicialMes, int inicialDia) {
+    	String respuesta = hotel.consultarHabitacion(opcion, IDHabitacion, inicialAnio, inicialMes, inicialDia);
+    	return respuesta;
+    }
+	public String[] agregarConsumo(String habitacion, String servicio, int tipo){
+		String [] resultado = hotel.agregarConsumo(habitacion, servicio, tipo);
+		return resultado;
+	}
+	
 	public void cargarHotel(String habitaciones, String inventario, String servicio, String restaurante, String temporada){
 		try {
 			hotel.cargarHotel(habitaciones, inventario, servicio, restaurante, temporada);

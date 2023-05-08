@@ -7,13 +7,13 @@ public class InterfazMenuEmpleado extends JFrame{
 
     private PanelNorteEmple panelNorte;
     private PanelCentroEmple panelCentro;
-
+    private InterfazLogin interfaz;
     
 
-    public InterfazMenuEmpleado(){
+    public InterfazMenuEmpleado(InterfazLogin interfaz){
 
         panelNorte = new PanelNorteEmple();
-        panelCentro = new PanelCentroEmple();
+        panelCentro = new PanelCentroEmple(interfaz);
 
 
         JPanel mainPanel = new JPanel();
