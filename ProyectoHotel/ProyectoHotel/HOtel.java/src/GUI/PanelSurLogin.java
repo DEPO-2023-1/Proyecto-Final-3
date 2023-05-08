@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
@@ -84,8 +85,13 @@ public class PanelSurLogin extends JPanel implements ActionListener{
 		
 		if (grito.equals(LOGIN)) {
 			
-			interfaz.login(tipo);
+			boolean x = interfaz.login(tipo);
 			
+			if (x == false){
+			JOptionPane.showInternalMessageDialog(null, "Usuario y/o contraseña incorrectas", "error", 1, null);
+			
+		}
+	
 		}
 		
 	}
