@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 
 public class InterfazMenuRecep extends JFrame{
@@ -15,7 +16,7 @@ public class InterfazMenuRecep extends JFrame{
     public InterfazMenuRecep(InterfazLogin interfaz){
     	this.interfaz = interfaz;
         boton = new PanelBotonRecep(interfaz);
-        titulo = new PanelNorteLogin();
+        titulo = new JLabel("Menu Recepcionista");
         
         setLayout(new BorderLayout());
         
@@ -28,8 +29,7 @@ public class InterfazMenuRecep extends JFrame{
 		setTitle("Calculadora :)");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setVisible(true);
-        
-        
+
     }
     
 	
