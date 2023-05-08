@@ -9,8 +9,8 @@ import javax.swing.JFrame;
 public class InterfazMenuRecep extends JFrame{
 	
 	private PanelBotonRecep boton;
-	private PanelNorteLogin titulo;
 	private InterfazLogin interfaz;
+    private JLabel titulo;
 
     public InterfazMenuRecep(InterfazLogin interfaz){
     	this.interfaz = interfaz;
