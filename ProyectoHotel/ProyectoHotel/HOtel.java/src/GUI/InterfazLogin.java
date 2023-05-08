@@ -52,11 +52,10 @@ public class InterfazLogin extends JFrame{
         JOptionPane.showMessageDialog(null, "Usuario: admin, Contrasenia: admin \n Usuario: empleado, Contrasenia: empleado \n Usuario: recepcionista, Contrasenia: recepcionista", "importante", 1, null);
 
     }
-    public void login(int tipo) {
+    public boolean login(int tipo) {
     	String usuario = PanelCentro.getTxtNum1();
     	String contrasena = PanelCentro.getTxtNum2();
-        boolean ingreso = true;
-    	//boolean ingreso = App.seleccionarUsuario(usuario, contrasena, tipo);
+    	boolean ingreso = App.seleccionarUsuario(usuario, contrasena, tipo);
 
     	if (ingreso) {
             if (tipo == 1){
@@ -69,9 +68,8 @@ public class InterfazLogin extends JFrame{
                 InterfazMenuEmpleado admin = new InterfazMenuEmpleado(this);
             }
     		
-            
-    	
     	}
+        return ingreso;
     }
     
     public String[] disponible(int inicialAnio, int inicialMes, int inicialDia, int finalAnio, int finalMes, int finalDia, int canNinos, int canAdultos) {
