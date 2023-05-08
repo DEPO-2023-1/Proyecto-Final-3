@@ -45,7 +45,7 @@ public class InterfazLogin extends JFrame{
 		add(PanelCalendario, BorderLayout.WEST);
 			
         setSize(new Dimension(1000, 850));
-		setResizable(false);
+		setResizable(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 
