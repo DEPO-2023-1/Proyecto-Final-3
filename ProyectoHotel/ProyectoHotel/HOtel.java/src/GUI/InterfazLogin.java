@@ -5,9 +5,16 @@ import javax.swing.JOptionPane;
 
 import Clases.App;
 import Clases.Grupo;
-
+import Clases.Hotel;
 
 import java.awt.*;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 
@@ -19,6 +26,7 @@ public class InterfazLogin extends JFrame{
     private PanelCalendario PanelCalendario;
     private App app;
     private ArrayList<Integer> matriz;
+    public static Hotel hotel;
 
     public InterfazLogin(){
     	
@@ -116,11 +124,60 @@ public class InterfazLogin extends JFrame{
         String [] resultado = app.agregarConsumo(habitacion, servicio, tipo);
         return resultado;
     }
+    public String input(String mensaje)
+	{
+		try
+		{
+			System.out.print(mensaje + ": ");
+			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+			return reader.readLine();
+		}
+		catch (IOException e)
+		{
+			System.out.println("Error leyendo de la consola");
+			e.printStackTrace();
+		}
+		return null;
+	}
     
+
+	public static void serializarObjeto(Hotel hotel) {
+        try (FileOutputStream fos = new FileOutputStream("hotel.bin");
+                ObjectOutputStream salida = new ObjectOutputStream(fos);) {
+            salida.writeObject(hotel);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+	public static Hotel deserializarObjeto(Class<Hotel> claseObjetivo) {
+        Hotel objeto = null;
+        try (FileInputStream fis = new FileInputStream("hotel.bin");
+                ObjectInputStream entrada = new ObjectInputStream(fis);) {
+            objeto = (Hotel) entrada.readObject();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return objeto;
+    }
     
     
     
     public static void main(String [] args) {
         InterfazLogin ip = new InterfazLogin();
+
+        Hotel h1 = deserializarObjeto(Hotel.class);
+
+        if (h1 != null){
+		hotel = h1;
+		}
+		else {
+
+		Hotel hotel1 = new Hotel();
+		hotel = hotel1;
+		}
+		
+    	
+		serializarObjeto(hotel);
     }
 }
