@@ -24,7 +24,7 @@ public class InterfazMenuRecep extends JFrame{
         
         setSize(new Dimension(1000,850));
 		setResizable(false);
-		setTitle("Calculadora :)");
+		setTitle("Menu Empleado)");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setVisible(true);
 
