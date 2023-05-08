@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import Clases.App;
 import Clases.Grupo;
 import Clases.Hotel;
+import javax.swing.JOptionPane;
 
 import java.awt.*;
 
@@ -33,6 +34,8 @@ public class InterfazLogin extends JFrame{
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
+
+        JOptionPane.showMessageDialog(null, "Usuario: admin, Contrasenia: admin \n Usuario: empleado, Contrasenia: empleado \n Usuario: recepcionista, Contrasenia: recepcionista", "importante", 1, null);
 
     }
     public void login(int tipo) {

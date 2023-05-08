@@ -66,7 +66,7 @@ public class PanelCentroEmple extends JPanel implements ActionListener{
 			String servicio = JOptionPane.showInputDialog("Ingrese el nombre del servicio");
 			String[] resultado = interfaz.agregarConsumo(habitacion, servicio, tipoSer);
 
-			JOptionPane.showMessageDialog(null, "Consumo de " + resultado[0] + " Cargado a la habitacion " + resultado[1], grito, 2, null);
+			JOptionPane.showMessageDialog(null, "Consumo de " + resultado[0] + " Cargado a la habitacion " + resultado[1], grito, 1, null);
 			
 			
 		}
