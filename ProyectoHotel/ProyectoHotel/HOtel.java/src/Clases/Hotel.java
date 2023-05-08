@@ -1,9 +1,10 @@
 package Clases;
 import java.util.Date;
-
+import java.util.concurrent.TimeUnit;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.io.*;
 
 
@@ -369,6 +370,32 @@ public class Hotel implements Serializable{
 
     }
 
+    public ArrayList<Integer> listaFechas(){
+    	ArrayList<Integer> lista = new ArrayList<>();
+    	
+    	for (Habitacion h: habitaciones) {
+    		ArrayList<Reserva> reservas = h.getReservas();
+    		for (Reserva r: reservas) {
+    			Date inicioD = r.getFechaFin();
+    			Date finalD = r.getFechaFin();
+    			
+    			Calendar calendar = Calendar.getInstance();
+    			calendar.setTime(inicioD);
+    			int valor1 = calendar.get(Calendar.DAY_OF_YEAR);
+    			calendar.setTime(finalD);
+    			int valor2 = calendar.get(Calendar.DAY_OF_YEAR);
+    			
+    			for (int i = valor1; i <= valor2; i++) {
+    			    lista.add(i);
+    			}
+    			
+    			
+    		}
+    	}
+    	return lista;
+    }
+    
+    
     public void cargarHotel() throws IOException{
     	
     	String habitaciones = input("Ingrese la ruta de archivo con la informacion de las habitaciones");

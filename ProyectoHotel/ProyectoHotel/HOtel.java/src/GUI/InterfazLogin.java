@@ -4,9 +4,10 @@ import javax.swing.JFrame;
 
 import Clases.App;
 import Clases.Grupo;
-import Clases.Hotel;
+
 
 import java.awt.*;
+import java.util.ArrayList;
 
 
 public class InterfazLogin extends JFrame{
@@ -14,11 +15,15 @@ public class InterfazLogin extends JFrame{
     private PanelNorteLogin PanelNorte;
     private PanelCentroLogin PanelCentro;
     private PanelSurLogin PanelSur;
+    private PanelCalendario PanelCalendario;
     private App app;
+    private ArrayList<Integer> matriz;
 
     public InterfazLogin(){
     	
         app = new App();
+        matriz = app.listaFechas();
+        PanelCalendario = new PanelCalendario(matriz);
         PanelNorte = new PanelNorteLogin();
         PanelCentro = new PanelCentroLogin();
         PanelSur = new PanelSurLogin(this);
@@ -26,10 +31,11 @@ public class InterfazLogin extends JFrame{
 
         setLayout(new BorderLayout());
 		add(PanelNorte, BorderLayout.NORTH);
-		add(PanelCentro, BorderLayout.CENTER);
+		add(PanelCentro, BorderLayout.EAST);
 		add(PanelSur, BorderLayout.SOUTH);
+		add(PanelCalendario, BorderLayout.WEST);
 			
-        setSize(new Dimension(1000, 650));
+        setSize(new Dimension(1000, 850));
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);

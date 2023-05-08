@@ -169,6 +169,9 @@ public abstract class Habitacion implements Serializable{
 	public ArrayList<ConsumoHab> getConsumos(){
 		return consumosHab;
 	}
+	public ArrayList<Reserva> getReservas(){
+		return reservas;
+	}
 
 	public float calcularPrecioIntermedio(int capacidadNino, int capaciodadAdulto, Boolean balcon, Boolean cocina,
 	Boolean vista, float precioI){

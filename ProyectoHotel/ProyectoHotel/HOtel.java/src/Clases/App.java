@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 
 
@@ -181,6 +182,10 @@ public class App {
     public String consultarHabitacion(int opcion, String IDHabitacion, int inicialAnio, int inicialMes, int inicialDia) {
     	String respuesta = hotel.consultarHabitacion(opcion, IDHabitacion, inicialAnio, inicialMes, inicialDia);
     	return respuesta;
+    }
+    
+    public ArrayList<Integer> listaFechas(){
+    	return hotel.listaFechas();
     }
     
     

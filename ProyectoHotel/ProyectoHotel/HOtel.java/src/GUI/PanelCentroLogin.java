@@ -19,7 +19,7 @@ public class PanelCentroLogin extends JPanel{
 	
 	public PanelCentroLogin() {
 
-		
+		setPreferredSize(new Dimension(800,300));
 		
 		lbNum1 = new JLabel("Usuario: ");
 		lbNum1.setPreferredSize(new Dimension(400, 100));

@@ -24,7 +24,7 @@ public class InterfazMenuEmpleado extends JFrame{
         add(mainPanel);
 
         setTitle("Menu Empleados");
-        setSize(1000, 750);
+        setSize(1000, 850);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
 

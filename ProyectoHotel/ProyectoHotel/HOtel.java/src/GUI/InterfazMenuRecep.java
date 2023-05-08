@@ -23,7 +23,7 @@ public class InterfazMenuRecep extends JFrame{
         add(boton);
         add(titulo, BorderLayout.NORTH);
         
-        setSize(new Dimension(1000,750));
+        setSize(new Dimension(1000,850));
 		setResizable(false);
 		setTitle("Calculadora :)");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
