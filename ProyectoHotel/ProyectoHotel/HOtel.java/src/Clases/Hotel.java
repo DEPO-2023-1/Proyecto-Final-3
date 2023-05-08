@@ -1,6 +1,5 @@
 package Clases;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.util.ArrayList;
@@ -312,7 +311,6 @@ public class Hotel implements Serializable{
 
     public void cancelarReserva(int inicialAnio, int inicialMes, int inicialDia, int finalAnio, int finalMes, int finalDia, String IDHabitacion){
     	
-    	String respuesta = "Por favor espere que pasen 48 horas despues de reservar para cancelar la reserva";
     	boolean verdad = Boolean.parseBoolean(input("Ingrese true si su reserva se hizo hace mas de 48 horas, si no ingrese false"));
     	if (verdad) {
     		
@@ -374,7 +372,7 @@ public class Hotel implements Serializable{
 
     }
 
-<<<<<<< HEAD
+
     public ArrayList<Integer> listaFechas(){
     	ArrayList<Integer> lista = new ArrayList<>();
     	
@@ -400,18 +398,10 @@ public class Hotel implements Serializable{
     	return lista;
     }
     
-    
-    public void cargarHotel() throws IOException{
-    	
-    	String habitaciones = input("Ingrese la ruta de archivo con la informacion de las habitaciones");
-    	String inventario = input("Ingrese la ruta de archivo con la informacion del inventario");
-    	String Servicio = input("Ingrese la ruta de archivo con la informacion de los servicios");
-    	String restaurante = input("Ingrese la ruta de archivo con la informacion de los productos del restaurante");
-    	String temporada = input("Ingrese la ruta de archivo con la informacion de las temporada");
-=======
+
     public void cargarHotel(String habitaciones, String inventario, String servicio, String restaurante, String temporada) throws IOException{
 
->>>>>>> 8866295826a6e0f31eeddb79213b92a2531e95a7
+
     	
     	cargarHabitacion(habitaciones);
     	cargarInventario(inventario);

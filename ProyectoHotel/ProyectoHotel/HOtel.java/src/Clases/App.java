@@ -22,125 +22,6 @@ public class App {
 	public App() {
 		hotel = new Hotel();
 	}
-    
-    public void mostrarMenu(int opcion) {
-    	
-    	if (opcion == 1) {
-			System.out.println("\n////////Bienvenido al menu de administradores/////////");
-    		System.out.println("\n1- Cargar Informacion hotel con archivos");
-    		System.out.println("\n2- Cargar Informacion Habitaciones manualmente");
-    		System.out.println("\n3- Actualizar infomación del hotel");
-    	}
-    	else if (opcion == 2) {
-			System.out.println("\n ////////Bienvenido al menu de recepción////////");
-    		System.out.println("\n1- Crear una reserva");
-    		System.out.println("\n2- Cancelar una reserva");
-    		System.out.println("\n3- Hacer Checkout");
-			System.out.println("\n4- Consultar inventario");
-			System.out.println("\n5- Condultar informaicon habitaciones");
-    	}
-    	else if (opcion == 3) {
-			System.out.println("\n////////Bienvenido al menu de empleados////////");
-    		System.out.println("\n1- Agregar consumo a una habitacion");
-    		System.out.println("\n2- Agregar un pago de un consumo");
-    		System.out.println("\n3- Hacer factura");
-    	}
-    	
-    	
-    }
-
-    public void ejecutarOpciones() throws IOException{
-
-        boolean continuar = true;
-		while (continuar)
-		{
-			try
-			{   
-				System.out.println("\nPor favor selecciones su tipo de usuario\n");
-				System.out.println("1- Administrador");
-				System.out.println("2- Recepcionista");
-				System.out.println("3- Empleado\n");
-				
-				// int usuario = frame.getUsuario(); 
-				
-				int usuario = Integer.parseInt(input(""));
-				
-				// login = frame.getLogin();
-				// contrasena = frame.getContrasena();
-				
-                String login = input("Ingrese su Login por favor ");
-                String contrasena = input("Ingrese su contraseña por favor ");
-                
-                boolean tipo = hotel.seleccionarUsuario(login, contrasena, usuario);
-				
-                if (tipo) {
-                	
-
-	                mostrarMenu(usuario);
-					System.out.println("\n0- salir de la aplicacion\n");
-	
-	                int opcion = Integer.parseInt((input("Seleccione una opcion por favor: ")));
-	
-					if (usuario == 1) {
-						
-						if (opcion == 1) {
-							//hotel.cargarHotel();
-						}
-						else if (opcion == 2) {
-							hotel.cargarHotelManual();
-						}
-						else if (opcion == 3) {
-							hotel.actualizarInformacion();
-						}
-					}
-					
-					else if (usuario == 2) {
-						if (opcion == 1) {
-						}
-						else if (opcion == 2) {
-							
-						}
-						else if (opcion == 3) {
-							
-						}
-						else if (opcion == 4) {
-							
-						}
-						else if (opcion == 5) {
-							
-						}
-					}
-					
-					else if (usuario == 3) {
-						if (opcion == 1) {
-													}
-						else if (opcion == 2) {
-							
-						}
-					}
-					
-					if (opcion == 0)
-					{
-						System.out.println("Saliendo de la aplicación ...");
-						continuar = false;
-					}
-	            }
-                else {
-                	System.out.println("Usuario y/o contraseña incorrecta");
-					System.out.println("\n1- Salir de la aplicacion");
-					System.out.println("2- Seguir");
-					int opcion = Integer.parseInt(input(""));
-					if (opcion == 1){
-						continuar = false;
-					}
-                }
-			}
-			catch (NumberFormatException e)
-			{
-				System.out.println("Debe seleccionar uno de los números de las opciones.");
-			}
-		}
-    }
 
     public static boolean seleccionarUsuario(String login, String contraseña, int usuario){
     	boolean respuesta = hotel.seleccionarUsuario(login, contraseña, usuario);
@@ -182,13 +63,13 @@ public class App {
     	String respuesta = hotel.consultarHabitacion(opcion, IDHabitacion, inicialAnio, inicialMes, inicialDia);
     	return respuesta;
     }
-<<<<<<< HEAD
+
     
     public ArrayList<Integer> listaFechas(){
     	return hotel.listaFechas();
     }
     
-=======
+
 	public String[] agregarConsumo(String habitacion, String servicio, int tipo){
 		String [] resultado = hotel.agregarConsumo(habitacion, servicio, tipo);
 		return resultado;
@@ -198,7 +79,7 @@ public class App {
 		try {
 			hotel.cargarHotel(habitaciones, inventario, servicio, restaurante, temporada);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 	}
@@ -208,13 +89,7 @@ public class App {
     public void cargarServiciosManual(String tipo, String nombre, float precio, String horaInicio, String horaFinal){
 		hotel.cargarServiciosManual(tipo, nombre, precio, horaInicio, horaFinal);
 	}
->>>>>>> 8866295826a6e0f31eeddb79213b92a2531e95a7
-    
-    
-    
-    
-    
-    
+
     
     public String input(String mensaje)
 	{

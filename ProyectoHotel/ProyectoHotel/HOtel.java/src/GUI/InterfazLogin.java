@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 
 import Clases.App;
 import Clases.Grupo;
-import Clases.Hotel;
+
 
 import java.awt.*;
 import java.util.ArrayList;

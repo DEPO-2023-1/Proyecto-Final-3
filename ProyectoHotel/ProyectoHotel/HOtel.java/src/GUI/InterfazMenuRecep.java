@@ -4,20 +4,18 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 
 
 public class InterfazMenuRecep extends JFrame{
 	
 	private PanelBotonRecep boton;
 	private InterfazLogin interfaz;
-    private JLabel titulo;
+    private PanelNorteAdmin titulo;
 
     public InterfazMenuRecep(InterfazLogin interfaz){
     	this.interfaz = interfaz;
         boton = new PanelBotonRecep(interfaz);
-        titulo = new JLabel("Menu Recepcionista");
-        
+        titulo = new PanelNorteAdmin();
         setLayout(new BorderLayout());
         
         
