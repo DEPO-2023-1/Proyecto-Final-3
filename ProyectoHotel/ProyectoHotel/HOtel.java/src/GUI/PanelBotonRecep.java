@@ -164,7 +164,7 @@ public class PanelBotonRecep extends JPanel implements ActionListener{
 				JOptionPane.showMessageDialog(interfaz,respuesta);
 			}
 			else if (opcion.equals("2")) {
-				String respuesta = interfaz.consultarHabitacion(1,IDHabitacion, 0,0,0);
+				String respuesta = interfaz.consultarHabitacion(2,IDHabitacion, 0,0,0);
 				JOptionPane.showMessageDialog(interfaz,respuesta);
 			}
 			

@@ -51,7 +51,23 @@ public class PanelSurCargaManual extends JPanel implements ActionListener{
 			Boolean cocina = Boolean.parseBoolean(JOptionPane.showInputDialog("Ingrese true si la habitacion tiene Cocina, si no ingrese false"));
 			Boolean vista = Boolean.parseBoolean(JOptionPane.showInputDialog("Ingrese true si la habitacion tiene Vista, si no ingrese false"));
 			float PrecioI = Float.parseFloat(JOptionPane.showInputDialog("Ingrese el precio base de la habitacion"));
-			interfaz.cargarHabitacionesManual(idHabitacion, tipo, ubicacion, capacidadNino, capaciodadAdulto, balcon, cocina, vista, PrecioI);
+			int tamanio = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el tamaño de la habitacion en metros cuadrados"));
+			Boolean aire = Boolean.parseBoolean(JOptionPane.showInputDialog("Ingrese true si la habitacion tiene aire acondicionado, si no ingrese false"));
+			Boolean calefaccion = Boolean.parseBoolean(JOptionPane.showInputDialog("Ingrese true si la habitacion tiene calefaccion, si no ingrese false"));
+			String tamCama = JOptionPane.showInputDialog("Ingrese el el tamanio de las camas");
+			Boolean tv = Boolean.parseBoolean(JOptionPane.showInputDialog("Ingrese true si la habitacion tiene TV, si no ingrese false"));
+			Boolean cafetera = Boolean.parseBoolean(JOptionPane.showInputDialog("Ingrese true si la habitacion tiene cafetera, si no ingrese false"));
+			Boolean elemHipoalergenicos = Boolean.parseBoolean(JOptionPane.showInputDialog("Ingrese true si la habitacion tiene tapetes y camas hipoalergenicos, si no ingrese false"));
+			Boolean plancha = Boolean.parseBoolean(JOptionPane.showInputDialog("Ingrese true si la habitacion tiene plancha, si no ingrese false"));
+			Boolean secador = Boolean.parseBoolean(JOptionPane.showInputDialog("Ingrese true si la habitacion tiene secador, si no ingrese false"));
+			Boolean voltajeAC = Boolean.parseBoolean(JOptionPane.showInputDialog("Ingrese true si la habitacion tiene voltajeAC, si no ingrese false"));
+			Boolean usbA = Boolean.parseBoolean(JOptionPane.showInputDialog("Ingrese true si la habitacion tiene usbA, si no ingrese false"));
+			Boolean usbC = Boolean.parseBoolean(JOptionPane.showInputDialog("Ingrese true si la habitacion tiene usbC, si no ingrese false"));
+			Boolean desayuno = Boolean.parseBoolean(JOptionPane.showInputDialog("Ingrese true si la habitacion tiene desayuno, si no ingrese false"));
+			
+			interfaz.cargarHabitacionesManual(idHabitacion, tipo, ubicacion, capacidadNino, capaciodadAdulto,
+					balcon, cocina, vista, PrecioI, tamanio, aire, calefaccion, tamCama, tv, cafetera,
+					elemHipoalergenicos, plancha, secador, voltajeAC, usbA, usbC, desayuno);
             JOptionPane.showMessageDialog(interfaz,"Se cargaron los archivos con exito");
 		}
 		if (grito.equals(servicios)) {

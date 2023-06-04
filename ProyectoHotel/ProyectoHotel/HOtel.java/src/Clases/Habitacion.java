@@ -29,10 +29,26 @@ public abstract class Habitacion implements Serializable{
 	private Boolean vista;
 	private float precioI;
 	private float precioF;
+	private int tamanio;
+	private Boolean aire;
+	private Boolean calefaccion;
+	private String tamCama;
+	private Boolean TV;
+	private Boolean cafetera;
+	private Boolean elemHipoalergenicos;
+	private Boolean plancha;
+	private Boolean secador;
+	private Boolean voltajeAC;
+	private Boolean usbA;
+	private Boolean usbC;
+	private Boolean desayuno;
 
-	//constructor//
-	public Habitacion(String idHabitacion, String tipo,String ubicacion, int capacidadNino, int capaciodadAdulto,
-	Boolean balcon, Boolean cocina, Boolean vista, float precioI){
+	//constructor//1	
+	public Habitacion(String idHabitacion, String ubicacion, String tipo, int capacidadNino,
+			int capaciodadAdulto, Boolean balcon, Boolean cocina, Boolean vista, float precioI,
+			int tamanio, Boolean aire, Boolean calefaccion, String tamCama, Boolean tv, Boolean cafetera,
+			Boolean elemHipoalergenicos, Boolean plancha, Boolean secador, Boolean voltajeAC, Boolean usbA,
+			Boolean usbC, Boolean desayuno) {
 		this.temporadas = new ArrayList<Temporada>();
 		this.reservas = new ArrayList<Reserva>();
 		this.grupos = new ArrayList<Grupo>();
@@ -48,6 +64,19 @@ public abstract class Habitacion implements Serializable{
 		this.precioI = precioI;
 		float valorIntermedio = calcularPrecioIntermedio(capacidadNino, capaciodadAdulto, balcon, cocina,vista, precioI);
 		this.precioF = valorIntermedio;
+		this.tamanio = tamanio;
+		this.aire = aire;
+		this.calefaccion = calefaccion;
+		this.tamCama = tamCama;
+		this.TV = tv;
+		this.cafetera = cafetera;
+		this.elemHipoalergenicos = elemHipoalergenicos;
+		this.plancha = plancha;
+		this.secador = secador;
+		this.voltajeAC = voltajeAC;
+		this.usbA = usbA;
+		this.usbC = usbC;
+		this.desayuno = desayuno;
 	}
 
     //metodos//
@@ -65,8 +94,8 @@ public abstract class Habitacion implements Serializable{
 		}
 		return respuesta;
 	}
-	
-	
+
+
 	public void addTemporada(Date inicialDate, Date finalDate, float aumento) {
 		
 		Temporada temporada = new Temporada(inicialDate, finalDate, aumento);
@@ -126,6 +155,71 @@ public abstract class Habitacion implements Serializable{
 		}
 	}
 	
+	public float calcularPrecioIntermedio(int capacidadNino, int capaciodadAdulto, Boolean balcon, Boolean cocina,
+			Boolean vista, float precioI){
+
+				float intermedio = precioI;
+				if (capacidadNino >2){
+					intermedio = (float) (intermedio + precioI*0.05);
+				}
+				if(capaciodadAdulto > 2){
+					intermedio = (float) (intermedio + precioI*0.05);
+				}
+				if(balcon){
+					intermedio = (float) (intermedio + precioI*0.05);
+				}
+				if(cocina){
+					intermedio = (float) (intermedio + precioI*0.05);
+				}
+				if(vista){
+					intermedio = (float) (intermedio + precioI*0.05);
+				}
+				return intermedio;
+			}
+
+	public int dayofWeek(Date date) {
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		return calendar.get(Calendar.DAY_OF_WEEK);
+	}
+
+	public float calcularPrecioTotal(float precioIntermedio, Date inicialDate, Date finalDate){
+		float aumento = 0;
+		if(dayofWeek(inicialDate)==6 && dayofWeek(finalDate)==7){
+			precioIntermedio = (float) (precioIntermedio*1.05);
+		}
+		else{
+			float aumento1 = 0;
+			float aumento2 = 0;
+			for(Temporada t: temporadas) {
+				Date fechaInicio = t.getFechaIn();
+				Date fechaFinal = t.getFechaFin();
+				if(inicialDate.after(fechaInicio) && inicialDate.before(fechaFinal)){
+					aumento1 = t.getAumento();
+				}
+				if(finalDate.after(fechaInicio) && inicialDate.before(fechaFinal)){
+					aumento2=t.getAumento();
+				}
+	
+			}
+	
+			if(aumento1 > aumento2){
+				aumento = aumento2;
+	
+			}else{
+				aumento = aumento1;
+			}
+			
+		}
+		return precioIntermedio + aumento;
+	}
+
+	public void eliminarConsumos(){
+		for(ConsumoHab ch: consumosHab){
+			consumosHab.remove(ch);
+		}
+	}
+	
 	
     public String getIdHabitacion() {
 		return idHabitacion;
@@ -172,73 +266,66 @@ public abstract class Habitacion implements Serializable{
 	public ArrayList<Reserva> getReservas(){
 		return reservas;
 	}
-
-	public float calcularPrecioIntermedio(int capacidadNino, int capaciodadAdulto, Boolean balcon, Boolean cocina,
-	Boolean vista, float precioI){
-
-		float intermedio = precioI;
-		if (capacidadNino >2){
-			intermedio = (float) (intermedio + precioI*0.05);
-		}
-		if(capaciodadAdulto > 2){
-			intermedio = (float) (intermedio + precioI*0.05);
-		}
-		if(balcon){
-			intermedio = (float) (intermedio + precioI*0.05);
-		}
-		if(cocina){
-			intermedio = (float) (intermedio + precioI*0.05);
-		}
-		if(vista){
-			intermedio = (float) (intermedio + precioI*0.05);
-		}
-		return intermedio;
+	
+	public int getTamanio() {
+		return tamanio;
 	}
 
-	public int dayofWeek(Date date) {
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(date);
-		return calendar.get(Calendar.DAY_OF_WEEK);
+	public Boolean getAire() {
+		return aire;
 	}
 
-	public float calcularPrecioTotal(float precioIntermedio, Date inicialDate, Date finalDate){
-		float aumento = 0;
-		if(dayofWeek(inicialDate)==6 && dayofWeek(finalDate)==7){
-			precioIntermedio = (float) (precioIntermedio*1.05);
-		}
-		else{
-			float aumento1 = 0;
-			float aumento2 = 0;
-			for(Temporada t: temporadas) {
-				Date fechaInicio = t.getFechaIn();
-				Date fechaFinal = t.getFechaFin();
-				if(inicialDate.after(fechaInicio) && inicialDate.before(fechaFinal)){
-					aumento1 = t.getAumento();
-				}
-				if(finalDate.after(fechaInicio) && inicialDate.before(fechaFinal)){
-					aumento2=t.getAumento();
-				}
-	
-			}
-	
-			if(aumento1 > aumento2){
-				aumento = aumento2;
-	
-			}else{
-				aumento = aumento1;
-			}
-			
-		}
-		return precioIntermedio + aumento;
+	public Boolean getCalefaccion() {
+		return calefaccion;
 	}
 
-	public void eliminarConsumos(){
-		for(ConsumoHab ch: consumosHab){
-			consumosHab.remove(ch);
-		}
+	public String getTamCama() {
+		return tamCama;
+	}
+
+	public Boolean getTV() {
+		return TV;
+	}
+
+	public Boolean getCafetera() {
+		return cafetera;
+	}
+
+	public Boolean getElemHipoalergenicos() {
+		return elemHipoalergenicos;
+	}
+
+	public Boolean getPlancha() {
+		return plancha;
+	}
+
+	public Boolean getSecador() {
+		return secador;
+	}
+
+	public Boolean getVoltajeAC() {
+		return voltajeAC;
+	}
+
+	public Boolean getUsbA() {
+		return usbA;
+	}
+
+	public Boolean getUsbC() {
+		return usbC;
+	}
+
+	public Boolean getDesayuno() {
+		return desayuno;
 	}
 
 	public String getTipo() {
 		return tipo;
 	}
+
+	public ArrayList<Temporada> getTemporadas() {
+		return temporadas;
+	}
+	
+	
 }

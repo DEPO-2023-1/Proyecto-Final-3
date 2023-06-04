@@ -7,14 +7,11 @@ import Clases.App;
 import Clases.Grupo;
 import Clases.Hotel;
 
+
 import java.awt.*;
 import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 
@@ -28,9 +25,8 @@ public class InterfazLogin extends JFrame{
     private ArrayList<Integer> matriz;
     public static Hotel hotel;
 
-    public InterfazLogin(){
-    	
-        app = new App();
+    public InterfazLogin(App app){
+    	this.app = app;
         matriz = app.listaFechas();
         PanelCalendario = new PanelCalendario(matriz);
         PanelNorte = new PanelNorteLogin();
@@ -46,8 +42,9 @@ public class InterfazLogin extends JFrame{
 			
         setSize(new Dimension(1000, 850));
 		setResizable(true);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setVisible(true);
+
+        setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
+        pack( );
 
         JOptionPane.showMessageDialog(null, "Usuario: admin, Contrasenia: admin \n Usuario: empleado, Contrasenia: empleado \n Usuario: recepcionista, Contrasenia: recepcionista", "importante", 1, null);
 
@@ -101,8 +98,13 @@ public class InterfazLogin extends JFrame{
     public void cargarHotel(String habitaciones, String inventario, String servicio, String restaurante, String temporada){
         app.cargarHotel(habitaciones, inventario, servicio, restaurante, temporada);
     }
-    public void cargarHabitacionesManual(String idHabitacion,String tipo,String ubicacion, int capacidadNino, int capaciodadAdulto, Boolean balcon, Boolean cocina, Boolean vista, float PrecioI){
-        app.cargarHabitacionesManual(idHabitacion, tipo, ubicacion, capacidadNino, capaciodadAdulto, balcon, cocina, vista, PrecioI);
+    public void cargarHabitacionesManual(String idHabitacion,String tipo,String ubicacion, int capacidadNino, int capaciodadAdulto,
+    		Boolean balcon, Boolean cocina, Boolean vista, float PrecioI, int tamanio, Boolean aire, Boolean calefaccion, String tamCama, Boolean tv, Boolean cafetera,
+			Boolean elemHipoalergenicos, Boolean plancha, Boolean secador, Boolean voltajeAC, Boolean usbA,
+			Boolean usbC, Boolean desayuno){
+		app.cargarHabitacionesManual(idHabitacion, tipo, ubicacion, capacidadNino, capaciodadAdulto,
+				balcon, cocina, vista, PrecioI, tamanio, aire, calefaccion, tamCama, tv, cafetera,
+				elemHipoalergenicos, plancha, secador, voltajeAC, usbA, usbC, desayuno);
     }
     public void cargarServiciosManual(String tipo, String nombre, float precio, String horaInicio, String horaFinal){
         app.cargarServiciosManual(tipo, nombre, precio, horaInicio, horaFinal);
@@ -137,45 +139,40 @@ public class InterfazLogin extends JFrame{
 		}
 		return null;
 	}
-    
 
-	public static void serializarObjeto(Hotel hotel) {
-        try (FileOutputStream fos = new FileOutputStream("hotel.bin");
-                ObjectOutputStream salida = new ObjectOutputStream(fos);) {
-            salida.writeObject(hotel);
-        } catch (Exception e) {
-            e.printStackTrace();
+
+    public void dispose( )
+    {
+       
+        try
+        {
+            app.salvarApp( );
+            super.dispose( );
+        }
+        catch( Exception e )
+        {
+            setVisible( true );
+            int respuesta = JOptionPane.showConfirmDialog( this, "Problemas salvando la información de la app:\n" + e.getMessage( ) + "\n¿Quiere cerrar el programa sin salvar?", "Error", JOptionPane.YES_NO_OPTION );
+            if( respuesta == JOptionPane.YES_OPTION )
+            {
+                super.dispose( );
+            }
         }
     }
+    
+    public static void main(String [] args)  {
 
-	public static Hotel deserializarObjeto(Class<Hotel> claseObjetivo) {
-        Hotel objeto = null;
-        try (FileInputStream fis = new FileInputStream("hotel.bin");
-                ObjectInputStream entrada = new ObjectInputStream(fis);) {
-            objeto = (Hotel) entrada.readObject();
-        } catch (Exception e) {
-            e.printStackTrace();
+        App app = null;
+
+        try{
+            app = new App("ProyectoHotel/ProyectoHotel/HOtel.java/data/app.txt");
         }
-        return objeto;
-    }
-    
-    
-    
-    public static void main(String [] args) {
-        InterfazLogin ip = new InterfazLogin();
-
-        Hotel h1 = deserializarObjeto(Hotel.class);
-
-        if (h1 != null){
-		hotel = h1;
-		}
-		else {
-
-		Hotel hotel1 = new Hotel();
-		hotel = hotel1;
-		}
-		
-    	
-		serializarObjeto(hotel);
+        catch( Exception e )
+        {
+            e.printStackTrace( );
+            System.exit( 1 );
+        }
+        InterfazLogin interfazLogin = new InterfazLogin(app);
+        interfazLogin.setVisible(true);
     }
 }

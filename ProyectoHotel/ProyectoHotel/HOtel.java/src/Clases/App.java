@@ -2,25 +2,44 @@ package Clases;
 
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 
 
 
 public class App {
-    
+
+    private static final String LOG_FILE = "./data/error.log";
 	public static Hotel hotel;
 	
 	//public static Frame frame;
+	private String archivoApp;
 	
-	public App() {
-		hotel = new Hotel();
+	public App(String nombreArchivoApp) throws FileNotFoundException, IOException, ClassNotFoundException {
+
+		this.archivoApp = nombreArchivoApp;
+		File archivo = new File( nombreArchivoApp );
+        if( archivo.exists( ) ){
+			ObjectInputStream ois = new ObjectInputStream( new FileInputStream( archivoApp ) );
+            hotel = ( Hotel )ois.readObject( );
+            ois.close( );
+		}
+		else{
+			hotel = new Hotel();
+		}
+
+
+		
 	}
 
     public static boolean seleccionarUsuario(String login, String contraseña, int usuario){
@@ -83,8 +102,13 @@ public class App {
 			e.printStackTrace();
 		}
 	}
-	public void cargarHabitacionesManual(String idHabitacion,String tipo,String ubicacion, int capacidadNino, int capaciodadAdulto, Boolean balcon, Boolean cocina, Boolean vista, float PrecioI){
-		hotel.cargarHabitacionesManual(idHabitacion, tipo, ubicacion, capacidadNino, capaciodadAdulto, balcon, cocina, vista, PrecioI);
+	public void cargarHabitacionesManual(String idHabitacion,String tipo,String ubicacion, int capacidadNino, int capaciodadAdulto,
+    		Boolean balcon, Boolean cocina, Boolean vista, float PrecioI, int tamanio, Boolean aire, Boolean calefaccion, String tamCama, Boolean tv, Boolean cafetera,
+			Boolean elemHipoalergenicos, Boolean plancha, Boolean secador, Boolean voltajeAC, Boolean usbA,
+			Boolean usbC, Boolean desayuno){
+		hotel.cargarHabitacionesManual(idHabitacion, tipo, ubicacion, capacidadNino, capaciodadAdulto,
+				balcon, cocina, vista, PrecioI, tamanio, aire, calefaccion, tamCama, tv, cafetera,
+				elemHipoalergenicos, plancha, secador, voltajeAC, usbA, usbC, desayuno);
 	}
     public void cargarServiciosManual(String tipo, String nombre, float precio, String horaInicio, String horaFinal){
 		hotel.cargarServiciosManual(tipo, nombre, precio, horaInicio, horaFinal);
@@ -128,27 +152,39 @@ public class App {
         return objeto;
     }
 
+	public void salvarApp( ) throws PersistenciaException 
+    {
+        try
+        {
+            ObjectOutputStream oos = new ObjectOutputStream( new FileOutputStream( archivoApp ) );
+            oos.writeObject( hotel );
+            oos.close( );
+        }
+        catch( IOException e )
+        {
+            registrarError( e );
+            throw new PersistenciaException( "Error al salvar: " + e.getMessage( ) );
+        }
+    }
 
-
-/* 
-    public static void main(String[] args) throws Exception {
-        App aplicacion = new App();
-		
-		Hotel h1 = deserializarObjeto(Hotel.class);
-
-		if (h1 != null){
-		hotel = h1;
-		}
-		else {
-
-		Hotel hotel1 = new Hotel();
-		hotel = hotel1;
-		}
-		
-    	
-		serializarObjeto(hotel);
-		
-	}	
-*/
+	public void registrarError( Exception excepcion )
+    {
+        try
+        {
+            FileWriter out = new FileWriter( LOG_FILE, true );
+            PrintWriter log = new PrintWriter( out );
+            log.println( "---------------------------------------" );
+            log.println( "App.java :" );
+            log.println( "---------------------------------------" );
+            excepcion.printStackTrace( log );
+            log.close( );
+            out.close( );
+        }
+        catch( IOException e )
+        {
+            excepcion.printStackTrace( );
+            e.printStackTrace( );
+        }
+    }
 	
 }
