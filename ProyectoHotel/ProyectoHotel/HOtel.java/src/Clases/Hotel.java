@@ -454,21 +454,21 @@ public class Hotel implements Serializable{
 			//Boolean vista = Boolean.parseBoolean(input("Ingrese true si la habitacion tiene Vista, si no ingrese false"));
 			//float PrecioI = Float.parseFloat(input("Ingrese el precio base de la habitacion"));
 
-			if (tipo.equals("Standar")) {
+			if (tipo.equals("standar")) {
 				Standard habitacion = new Standard(idHabitacion, tipo, ubicacion, capacidadNino, capaciodadAdulto,
 						balcon, cocina, vista, PrecioI, tamanio, aire, calefaccion, tamCama, tv, cafetera,
 						elemHipoalergenicos, plancha, secador, voltajeAC, usbA, usbC, desayuno);
 				habitaciones.add(habitacion);
 
 			}
-			else if (tipo.equals("Suite")) {
+			else if (tipo.equals("suite")) {
 				Suite habitacion = new Suite(idHabitacion, tipo, ubicacion, capacidadNino, capaciodadAdulto,
 						balcon, cocina, vista, PrecioI, tamanio, aire, calefaccion, tamCama, tv, cafetera,
 						elemHipoalergenicos, plancha, secador, voltajeAC, usbA, usbC, desayuno);
 				habitaciones.add(habitacion);
 
 			}
-			else if (tipo.equals("SuitDoble")) {				
+			else if (tipo.equals("suiteDoble")) {				
 				SuitDoble habitacion = new SuitDoble(idHabitacion, tipo, ubicacion, capacidadNino, capaciodadAdulto,
 						balcon, cocina, vista, PrecioI, tamanio, aire, calefaccion, tamCama, tv, cafetera,
 						elemHipoalergenicos, plancha, secador, voltajeAC, usbA, usbC, desayuno);
