@@ -100,7 +100,7 @@ public class TestCargaYReserva {
 	@Test
 	@DisplayName("Reservas")
 	public void testReservaDisponible(){
-		boolean prueba = false;
+		boolean prueba = true;
 		hotel.cargarHabitacionesManual("0001", "Suite", "torre 2", 2, 3, true, false, true, 50000, 73, true, false, "grande", true, false, true, true, false, true, true, false, true);
 
 		String[] respuesta = hotel.reservaDisponible(2021, 2, 1, 2021, 3, 1, 1, 1);
@@ -109,7 +109,15 @@ public class TestCargaYReserva {
 		hotel.agregarHuespedGrupo(grupo, "daniel", 20212002, 12, "prueba@prueba.com");
 		hotel.crearReserva(grupo, 2021, 2, 1, 2021, 3, 3, respuesta[0]);
 
-		
+		String resultado = hotel.checkOut(respuesta[0]);
+
+
+		if (resultado == "Hubo un error"){
+			prueba = false;
+		}
+
+		assertEquals(true, prueba);
+
 	}
 	
 	

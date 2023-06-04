@@ -1,2 +1,3 @@
 espa;individual;15000
 zumba;grupal;10000
+carne;individual;2000

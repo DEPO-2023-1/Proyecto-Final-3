@@ -98,6 +98,7 @@ public class Hotel implements Serializable{
 			if (nombre.equals(IDHabitacion)) {
 				h.agregarConsumo(IDHabitacion, servicio);
 				break;
+				
 			}
     	}
         for(Inventario i:inventarios){
@@ -370,24 +371,27 @@ public class Hotel implements Serializable{
             	respuesta = "Gracias por su estadía\n"
                 		+ "----------------------------------------------\n"
                 		+ "Servicio.....................................Valor\n";
-                for(ConsumoHab ch: h.getConsumos()){
-                    for(Servicio s: servicios){
-                        if(ch.getServicio().equals(s.getNombre())){
-                            valor=s.getPrecio();
-                            valorFinal += valor;
-                            String valors=Float.toString(valor);
-                            respuesta += ch+".........................................."+valors + "\n\n";
-                            break;
-                        }
-                    }
-                    respuesta += "TOTAL.........................................."+valorFinal;
-                    h.getConsumos().remove(ch);
-                    
-                }
+				if (respuesta == "no"){
+					for(ConsumoHab ch: h.getConsumos()){
+						for(Servicio s: servicios){
+							if(ch.getServicio().equals(s.getNombre())){
+								valor=s.getPrecio();
+								valorFinal += valor;
+								String valors=Float.toString(valor);
+								respuesta += ch+".........................................."+valors + "\n\n";
+								break;
+							}
+						}
+						respuesta += "TOTAL.........................................."+valorFinal;
+						h.getConsumos().remove(ch);
+					}
+					
+				}
                 
                 break;
             }
-        }
+        
+		}
         return respuesta;
 
     }
@@ -411,7 +415,6 @@ public class Hotel implements Serializable{
     			for (int i = valor1; i <= valor2; i++) {
     			    lista.add(i);
     			}
-    			
     			
     		}
     	}
