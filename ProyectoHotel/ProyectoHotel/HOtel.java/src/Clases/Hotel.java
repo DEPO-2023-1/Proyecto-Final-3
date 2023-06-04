@@ -708,6 +708,7 @@ public class Hotel implements Serializable{
 						elemHipoalergenicos, plancha, secador, voltajeAC, usbA, usbC, desayuno);
 				habitaciones.add(habitacion);
 			}
+			linea = lector.readLine();
         }
 		lector.close();
     }
@@ -763,7 +764,7 @@ public class Hotel implements Serializable{
     
 
 	private void cargarRestaurante(String rutRestaurante) throws IOException{
-
+		productos = new ArrayList<MenuRestaurante>();
     	File archivo = new File(rutRestaurante);
 		BufferedReader lector = new BufferedReader(new FileReader(archivo));
 		String linea = lector.readLine();
@@ -779,12 +780,12 @@ public class Hotel implements Serializable{
 
 
 			if (tipo.equals("Comedor")) {
-				Comedor producto = new Comedor(nombre, tipo, precio, horaInicio, horaFinal);
+				MenuRestaurante producto = new Comedor(nombre, tipo, precio, horaInicio, horaFinal);
 				productos.add(producto);
 
 			}
 			if (tipo.equals("ServicioHabitacion")) {
-				ServicioHab producto = new ServicioHab(nombre, tipo, precio, horaInicio, horaFinal);
+				MenuRestaurante producto = new ServicioHab(nombre, tipo, precio, horaInicio, horaFinal);
 				productos.add(producto);
 			}
 

@@ -60,11 +60,11 @@ public class PanelSurAdmin extends JPanel implements ActionListener{
 		String grito = e.getActionCommand();
 		if (grito.equals(archivos)) {
 			
-			String habitaciones = JOptionPane.showInputDialog("Ingrese la ruta de archivo con la informacion de las habitaciones");
-			String inventario = JOptionPane.showInputDialog("Ingrese la ruta de archivo con la informacion del inventario");
-    		String Servicio = JOptionPane.showInputDialog("Ingrese la ruta de archivo con la informacion de los servicios");
-    		String restaurante = JOptionPane.showInputDialog("Ingrese la ruta de archivo con la informacion de los productos del restaurante");
-    		String temporada = JOptionPane.showInputDialog("Ingrese la ruta de archivo con la informacion de las temporada");
+			String habitaciones = "ProyectoHotel/ProyectoHotel/HOtel.java/data/Test/Habitaciones.txt";
+			String inventario = "ProyectoHotel/ProyectoHotel/HOtel.java/data/Test/Inventario.txt";
+    		String Servicio = "ProyectoHotel/ProyectoHotel/HOtel.java/data/Test/Servicios.txt";
+    		String restaurante = "ProyectoHotel/ProyectoHotel/HOtel.java/data/Test/Restaurante.txt";
+    		String temporada = "ProyectoHotel/ProyectoHotel/HOtel.java/data/Test/Temporada.txt";
 			interfaz.cargarHotel(habitaciones, inventario, Servicio, restaurante, temporada);
 			JOptionPane.showMessageDialog(interfaz,"Se cargaron los archivos con exito");
 		}
