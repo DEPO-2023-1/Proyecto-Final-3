@@ -65,6 +65,7 @@ public class InterfazLogin extends JFrame{
             }
             if (tipo == 4){
                 InterfazUsuario user = new InterfazUsuario(this);
+
             }
     		
     	}
@@ -74,6 +75,10 @@ public class InterfazLogin extends JFrame{
         InterfazRegistro registro = new InterfazRegistro(this);
 
     } 
+
+    public void registro(String usuario, String contra){
+        app.registrarse(usuario, contra);
+    }
     
     public String[] disponible(int inicialAnio, int inicialMes, int inicialDia, int finalAnio, int finalMes, int finalDia, int canNinos, int canAdultos) {
     	String[] respuesta = app.disponible(inicialAnio, inicialMes, inicialDia, finalAnio, finalMes, finalDia, canNinos, canAdultos);

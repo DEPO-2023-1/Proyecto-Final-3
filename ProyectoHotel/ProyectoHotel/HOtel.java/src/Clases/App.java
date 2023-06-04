@@ -2,10 +2,12 @@ package Clases;
 
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -193,5 +195,31 @@ public class App {
 
 		hotel.registroUsuario(archivo, usuario, contraseña);
 	}*/
+
+    public void registrarse(String usuario, String contra){
+
+        String contenido = usuario + "," + contra;
+        String archivo = "ProyectoHotel/ProyectoHotel/HOtel.java/data/usuarios.txt";
+        
+        try {
+            // Abre el archivo en modo de anexado
+            FileWriter fileWriter = new FileWriter(archivo, true);
+            
+            // Crea un BufferedWriter para escribir en el archivo
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            
+            // Escribe las líneas separadas en el archivo
+            bufferedWriter.write(contenido);
+            bufferedWriter.newLine();
+            
+            // Cierra el BufferedWriter
+            bufferedWriter.close();
+            
+            System.out.println("Se ha escrito en el archivo correctamente.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 	
 }

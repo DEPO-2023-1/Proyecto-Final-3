@@ -8,7 +8,7 @@ public class PanelNorteUser extends JPanel {
     private JLabel titulo;
 
     public PanelNorteUser (){
-        titulo = new JLabel ("Hotel");
+        titulo = new JLabel ("Menu usuarios");
 
         Font auxFont=titulo.getFont();
 

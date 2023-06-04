@@ -1,60 +1,29 @@
 package GUI;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
-public class PanelCentroUsuario extends JPanel{
+public class PanelCentroUsuario extends JPanel implements ActionListener{
 
-	
-    private JLabel lbNum1;
-	private JLabel lbNum2;
-	
-	private JTextField txtNum1;
-	private JTextField txtNum2;
-	
-	
-	
-	
-	public PanelCentroUsuario() {
+	private JButton consultarHab;
+	private static final String ConHabitacion = "ConHabitacion";
+	private InterfazLogin interfaz;
 
-		setPreferredSize(new Dimension(800,300));
+	public PanelCentroUsuario(InterfazLogin interfaz){
+		this.interfaz = interfaz;
 		
-		lbNum1 = new JLabel("Crea tu nombre de usuario: ");
-		lbNum1.setPreferredSize(new Dimension(400, 100));
-		
-		txtNum1 = new JTextField();
-		txtNum1 .setPreferredSize(new Dimension(400, 50));
-
-		lbNum2 = new JLabel("Crea tu contraseña");
-		lbNum2.setPreferredSize(new Dimension(400, 100));
-		
-		txtNum2 = new JTextField();
-		txtNum2 .setPreferredSize(new Dimension(400, 50));
-		
-		
-
-		setLayout(new FlowLayout());
-
-		//setLayout(new GridLayout(2,2));
-		
-//		GridLayout gl = new GridLayout();
-//		setLayout(gl);
-		
-		add(lbNum1);
-		add(txtNum1);
-		add(lbNum2);
-		add(txtNum2);	
-
+		consultarHab = new JButton("Consultar Habitacion");
+		consultarHab.setBounds(720, 480, 175, 50);
+		consultarHab.addActionListener(this);
+		consultarHab.setActionCommand(ConHabitacion);
 	}
 
-
-	public String getTxtNum1() {
-		return txtNum1.getText();
-	}
-
-
-	public String getTxtNum2() {
-		return txtNum2.getText();
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
 	}
 
 	
