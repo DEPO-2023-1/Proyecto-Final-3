@@ -15,6 +15,7 @@ public class InterfazUsuario extends JFrame {
 
         this.interfaz=interfaz;
         panelNorte = new PanelNorteUser();
+        panelCentro = new PanelCentroUsuario();
         //PanelSur = new PanelSurAdmin(interfaz);
 
         setLayout(new BorderLayout());
