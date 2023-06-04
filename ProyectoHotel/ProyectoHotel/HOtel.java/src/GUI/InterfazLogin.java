@@ -64,10 +64,16 @@ public class InterfazLogin extends JFrame{
             if (tipo == 3){
                 InterfazMenuEmpleado admin = new InterfazMenuEmpleado(this);
             }
+            if (tipo == 4){
+                InterfazUsuario user = new InterfazUsuario(this);
+            }
     		
     	}
         return ingreso;
     }
+    public void menuRegistro(){
+        InterfazRegistro registro = new InterfazRegistro(this);
+    } 
     
     public String[] disponible(int inicialAnio, int inicialMes, int inicialDia, int finalAnio, int finalMes, int finalDia, int canNinos, int canAdultos) {
     	String[] respuesta = app.disponible(inicialAnio, inicialMes, inicialDia, finalAnio, finalMes, finalDia, canNinos, canAdultos);

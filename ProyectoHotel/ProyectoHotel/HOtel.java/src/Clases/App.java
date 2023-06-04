@@ -186,5 +186,12 @@ public class App {
             e.printStackTrace( );
         }
     }
+    /*public void registrarse (){
+		String archivo = "./data/usuarios";
+		String usuario = input("Ingrese su nombre de usuario");
+		String contraseña = input("Ingrese su contraseña");
+
+		hotel.registroUsuario(archivo, usuario, contraseña);
+	}*/
 	
 }

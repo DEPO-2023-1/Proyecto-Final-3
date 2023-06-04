@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.io.*;
+import java.io.PrintWriter;
 
 
 
@@ -57,6 +58,9 @@ public class Hotel implements Serializable{
 			}
 			else if (usuario == 3){
 				direccion = "ProyectoHotel/ProyectoHotel/HOtel.java/data/empleado.txt";
+			}
+			else if(usuario == 4){
+				direccion = "ProyectoHotel/ProyectoHotel/HOtel.java/data/usuarios.txt";
 			}
 			FileReader fileReader = new FileReader(direccion);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -894,9 +898,5 @@ public String input(String mensaje)
 	public ArrayList<MenuRestaurante> getProductos() {
 		return productos;
 	}
-
-
-
-
 
 }
