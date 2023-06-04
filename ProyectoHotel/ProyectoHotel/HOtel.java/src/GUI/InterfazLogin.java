@@ -53,7 +53,7 @@ public class InterfazLogin extends JFrame{
     	String usuario = PanelCentro.getTxtNum1();
     	String contrasena = PanelCentro.getTxtNum2();
     	boolean ingreso = App.seleccionarUsuario(usuario, contrasena, tipo);
-
+        InterfazRegistro registro = new InterfazRegistro(this);
     	if (ingreso) {
             if (tipo == 1){
                 InterfazMenuAdmin admin = new InterfazMenuAdmin(this);
@@ -73,6 +73,7 @@ public class InterfazLogin extends JFrame{
     }
     public void menuRegistro(){
         InterfazRegistro registro = new InterfazRegistro(this);
+
     } 
     
     public String[] disponible(int inicialAnio, int inicialMes, int inicialDia, int finalAnio, int finalMes, int finalDia, int canNinos, int canAdultos) {

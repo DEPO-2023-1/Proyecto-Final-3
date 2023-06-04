@@ -18,7 +18,7 @@ public class PanelSurLogin extends JPanel implements ActionListener{
     private final static String ADMIN = "admin";
 	private final static String EMPLEADO = "empleado";
 	private final static String RECEPCIONISTA= "recepcionista";
-	private final static String REGISTRO = "Registro Usuario";
+	private final static String REGISTRO = "registro";
 	private JLabel labAdmin;
 	private JLabel labEmpleado;
 	private JLabel labRecepcionista;
@@ -69,9 +69,11 @@ public class PanelSurLogin extends JPanel implements ActionListener{
 		butLogin.addActionListener(this);
 		butLogin.setActionCommand(LOGIN);
 
-		butRegistro = new JButton("Registro Usuarios");
+		butRegistro = new JButton("Registrate");
 		butRegistro.addActionListener(this);
 		butRegistro.setActionCommand(REGISTRO);
+
+
 
 
         add(labAdmin);
@@ -84,6 +86,8 @@ public class PanelSurLogin extends JPanel implements ActionListener{
 		add(butUsuario);
         add(butLogin);
 		add(butRegistro);
+
+		
 		
     }
     
@@ -114,14 +118,14 @@ public class PanelSurLogin extends JPanel implements ActionListener{
 			if (x == false){
 			JOptionPane.showInternalMessageDialog(null, "Usuario y/o contraseña incorrectas", "error", 1, null);
 			
-		}
+			}
 
+		}
+		
 		if (grito.equals(REGISTRO)){
 			interfaz.menuRegistro();
 		}
-	
-		}
-		
+
 	}
     
 }
