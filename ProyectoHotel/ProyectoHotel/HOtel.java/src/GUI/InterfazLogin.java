@@ -53,7 +53,6 @@ public class InterfazLogin extends JFrame{
     	String usuario = PanelCentro.getTxtNum1();
     	String contrasena = PanelCentro.getTxtNum2();
     	boolean ingreso = App.seleccionarUsuario(usuario, contrasena, tipo);
-
     	if (ingreso) {
             if (tipo == 1){
                 InterfazMenuAdmin admin = new InterfazMenuAdmin(this);
@@ -64,9 +63,21 @@ public class InterfazLogin extends JFrame{
             if (tipo == 3){
                 InterfazMenuEmpleado admin = new InterfazMenuEmpleado(this);
             }
+            if (tipo == 4){
+                InterfazUsuario user = new InterfazUsuario(this);
+
+            }
     		
     	}
         return ingreso;
+    }
+    public void menuRegistro(){
+        InterfazRegistro registro = new InterfazRegistro(this);
+
+    } 
+
+    public void registro(String usuario, String contra){
+        app.registrarse(usuario, contra);
     }
     
     public String[] disponible(int inicialAnio, int inicialMes, int inicialDia, int finalAnio, int finalMes, int finalDia, int canNinos, int canAdultos) {
@@ -140,6 +151,10 @@ public class InterfazLogin extends JFrame{
 		return null;
 	}
 
+    public void pago(String tipo, String cuenta, int cantidad){
+        app.pago(tipo, cuenta, cantidad);
+    }
+
 
     public void dispose( )
     {
@@ -165,7 +180,7 @@ public class InterfazLogin extends JFrame{
         App app = null;
 
         try{
-            app = new App("ProyectoHotel/ProyectoHotel/HOtel.java/data/app.txt");
+            app = new App("ProyectoHotel/ProyectoHotel/HOtel.java/data/appp.txt");
         }
         catch( Exception e )
         {

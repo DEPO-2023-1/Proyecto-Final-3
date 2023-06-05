@@ -2,6 +2,7 @@ package Clases;
 
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -87,6 +88,44 @@ public class App {
     public ArrayList<Integer> listaFechas(){
     	return hotel.listaFechas();
     }
+
+    public void pago(String tipo, String cuenta, int cantidad){
+        
+        String contenido = cuenta + " , " + cantidad;
+        String archivo = "ProyectoHotel/ProyectoHotel/HOtel.java/data/usuarios.txt";
+
+        if (tipo.equals("PayPal")){
+            archivo = "ProyectoHotel/ProyectoHotel/HOtel.java/data/pagos/PayPal.txt";
+        }
+        else if (tipo.equals("Payu")){
+            archivo = "ProyectoHotel/ProyectoHotel/HOtel.java/data/pagos/Payu.txt";
+        }
+        else if (tipo.equals("Sire")){
+            archivo = "ProyectoHotel/ProyectoHotel/HOtel.java/data/pagos/Sire.txt";
+        }
+        
+        try {
+            // Abre el archivo en modo de anexado
+            FileWriter fileWriter = new FileWriter(archivo, true);
+            
+            // Crea un BufferedWriter para escribir en el archivo
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            
+            // Escribe las líneas separadas en el archivo
+            bufferedWriter.write(contenido);
+            bufferedWriter.newLine();
+            
+            // Cierra el BufferedWriter
+            bufferedWriter.close();
+            
+            System.out.println("Se ha escrito en el archivo correctamente.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    
     
 
 	public String[] agregarConsumo(String habitacion, String servicio, int tipo){
@@ -186,5 +225,38 @@ public class App {
             e.printStackTrace( );
         }
     }
+    /*public void registrarse (){
+		String archivo = "./data/usuarios";
+		String usuario = input("Ingrese su nombre de usuario");
+		String contraseña = input("Ingrese su contraseña");
+
+		hotel.registroUsuario(archivo, usuario, contraseña);
+	}*/
+
+    public void registrarse(String usuario, String contra){
+
+        String contenido = usuario + "," + contra;
+        String archivo = "ProyectoHotel/ProyectoHotel/HOtel.java/data/usuarios.txt";
+        
+        try {
+            // Abre el archivo en modo de anexado
+            FileWriter fileWriter = new FileWriter(archivo, true);
+            
+            // Crea un BufferedWriter para escribir en el archivo
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            
+            // Escribe las líneas separadas en el archivo
+            bufferedWriter.write(contenido);
+            bufferedWriter.newLine();
+            
+            // Cierra el BufferedWriter
+            bufferedWriter.close();
+            
+            System.out.println("Se ha escrito en el archivo correctamente.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 	
 }

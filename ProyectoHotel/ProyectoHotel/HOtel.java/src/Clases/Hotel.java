@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.io.*;
+import java.io.PrintWriter;
 
 
 
@@ -63,6 +64,8 @@ public class Hotel implements Serializable{
 	   }
    }
 
+
+
     public boolean seleccionarUsuario(String login, String contraseña, int usuario){
 		String direccion = "";
 		boolean result = false;
@@ -76,6 +79,9 @@ public class Hotel implements Serializable{
 			}
 			else if (usuario == 3){
 				direccion = "ProyectoHotel/ProyectoHotel/HOtel.java/data/empleado.txt";
+			}
+			else if(usuario == 4){
+				direccion = "ProyectoHotel/ProyectoHotel/HOtel.java/data/usuarios.txt";
 			}
 			FileReader fileReader = new FileReader(direccion);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -113,6 +119,7 @@ public class Hotel implements Serializable{
 			if (nombre.equals(IDHabitacion)) {
 				h.agregarConsumo(IDHabitacion, servicio);
 				break;
+				
 			}
     	}
         for(Inventario i:inventarios){
@@ -387,24 +394,27 @@ public class Hotel implements Serializable{
             	respuesta = "Gracias por su estadía\n"
                 		+ "----------------------------------------------\n"
                 		+ "Servicio.....................................Valor\n";
-                for(ConsumoHab ch: h.getConsumos()){
-                    for(Servicio s: servicios){
-                        if(ch.getServicio().equals(s.getNombre())){
-                            valor=s.getPrecio();
-                            valorFinal += valor;
-                            String valors=Float.toString(valor);
-                            respuesta += ch+".........................................."+valors + "\n\n";
-                            break;
-                        }
-                    }
-                    respuesta += "TOTAL.........................................."+valorFinal;
-                    h.getConsumos().remove(ch);
-                    
-                }
+				if (respuesta == "no"){
+					for(ConsumoHab ch: h.getConsumos()){
+						for(Servicio s: servicios){
+							if(ch.getServicio().equals(s.getNombre())){
+								valor=s.getPrecio();
+								valorFinal += valor;
+								String valors=Float.toString(valor);
+								respuesta += ch+".........................................."+valors + "\n\n";
+								break;
+							}
+						}
+						respuesta += "TOTAL.........................................."+valorFinal;
+						h.getConsumos().remove(ch);
+					}
+					
+				}
                 
                 break;
             }
-        }
+        
+		}
         return respuesta;
 
     }
@@ -429,12 +439,12 @@ public class Hotel implements Serializable{
     			    lista.add(i);
     			}
     			
-    			
     		}
     	}
     	return lista;
     }
     
+
 
     public void cargarHotel(String habitaciones, String inventario, String servicio, String restaurante, String temporada) throws IOException{
 
@@ -471,21 +481,21 @@ public class Hotel implements Serializable{
 			//Boolean vista = Boolean.parseBoolean(input("Ingrese true si la habitacion tiene Vista, si no ingrese false"));
 			//float PrecioI = Float.parseFloat(input("Ingrese el precio base de la habitacion"));
 
-			if (tipo.equals("Standar")) {
+			if (tipo.equals("standar")) {
 				Standard habitacion = new Standard(idHabitacion, tipo, ubicacion, capacidadNino, capaciodadAdulto,
 						balcon, cocina, vista, PrecioI, tamanio, aire, calefaccion, tamCama, tv, cafetera,
 						elemHipoalergenicos, plancha, secador, voltajeAC, usbA, usbC, desayuno);
 				habitaciones.add(habitacion);
 
 			}
-			else if (tipo.equals("Suite")) {
+			else if (tipo.equals("suite")) {
 				Suite habitacion = new Suite(idHabitacion, tipo, ubicacion, capacidadNino, capaciodadAdulto,
 						balcon, cocina, vista, PrecioI, tamanio, aire, calefaccion, tamCama, tv, cafetera,
 						elemHipoalergenicos, plancha, secador, voltajeAC, usbA, usbC, desayuno);
 				habitaciones.add(habitacion);
 
 			}
-			else if (tipo.equals("SuitDoble")) {				
+			else if (tipo.equals("suiteDoble")) {				
 				SuitDoble habitacion = new SuitDoble(idHabitacion, tipo, ubicacion, capacidadNino, capaciodadAdulto,
 						balcon, cocina, vista, PrecioI, tamanio, aire, calefaccion, tamCama, tv, cafetera,
 						elemHipoalergenicos, plancha, secador, voltajeAC, usbA, usbC, desayuno);
@@ -725,6 +735,7 @@ public class Hotel implements Serializable{
 						elemHipoalergenicos, plancha, secador, voltajeAC, usbA, usbC, desayuno);
 				habitaciones.add(habitacion);
 			}
+			linea = lector.readLine();
         }
 		lector.close();
     }
@@ -780,7 +791,7 @@ public class Hotel implements Serializable{
     
 
 	private void cargarRestaurante(String rutRestaurante) throws IOException{
-
+		productos = new ArrayList<MenuRestaurante>();
     	File archivo = new File(rutRestaurante);
 		BufferedReader lector = new BufferedReader(new FileReader(archivo));
 		String linea = lector.readLine();
@@ -796,12 +807,12 @@ public class Hotel implements Serializable{
 
 
 			if (tipo.equals("Comedor")) {
-				Comedor producto = new Comedor(nombre, tipo, precio, horaInicio, horaFinal);
+				MenuRestaurante producto = new Comedor(nombre, tipo, precio, horaInicio, horaFinal);
 				productos.add(producto);
 
 			}
 			if (tipo.equals("ServicioHabitacion")) {
-				ServicioHab producto = new ServicioHab(nombre, tipo, precio, horaInicio, horaFinal);
+				MenuRestaurante producto = new ServicioHab(nombre, tipo, precio, horaInicio, horaFinal);
 				productos.add(producto);
 			}
 
@@ -923,9 +934,5 @@ public String input(String mensaje)
 		return precios;
 	}
 	
-
-
-
-
 
 }

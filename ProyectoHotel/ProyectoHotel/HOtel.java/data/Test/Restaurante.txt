@@ -1,0 +1,2 @@
+Comedor;carne;2000;10:00;14:00
+ServicioHabitacion;pollo;4000;10:00;14:00

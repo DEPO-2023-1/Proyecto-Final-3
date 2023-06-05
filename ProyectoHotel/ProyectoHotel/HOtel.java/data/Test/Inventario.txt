@@ -1,4 +1,2 @@
 carne;40
 pollo;30
-pezcado;20
-jugo;20

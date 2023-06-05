@@ -184,34 +184,11 @@ public abstract class Habitacion implements Serializable{
 	}
 
 	public float calcularPrecioTotal(float precioIntermedio, Date inicialDate, Date finalDate){
-		float aumento = 0;
+		float aumento = 1;
 		if(dayofWeek(inicialDate)==6 && dayofWeek(finalDate)==7){
 			precioIntermedio = (float) (precioIntermedio*1.05);
 		}
-		else{
-			float aumento1 = 0;
-			float aumento2 = 0;
-			for(Temporada t: temporadas) {
-				Date fechaInicio = t.getFechaIn();
-				Date fechaFinal = t.getFechaFin();
-				if(inicialDate.after(fechaInicio) && inicialDate.before(fechaFinal)){
-					aumento1 = t.getAumento();
-				}
-				if(finalDate.after(fechaInicio) && inicialDate.before(fechaFinal)){
-					aumento2=t.getAumento();
-				}
-	
-			}
-	
-			if(aumento1 > aumento2){
-				aumento = aumento2;
-	
-			}else{
-				aumento = aumento1;
-			}
-			
-		}
-		return precioIntermedio + aumento;
+		return precioIntermedio * aumento;
 	}
 
 	public void eliminarConsumos(){
