@@ -180,7 +180,7 @@ public class InterfazLogin extends JFrame{
         App app = null;
 
         try{
-            app = new App("ProyectoHotel/ProyectoHotel/HOtel.java/data/app.txt");
+            app = new App("ProyectoHotel/ProyectoHotel/HOtel.java/data/appp.txt");
         }
         catch( Exception e )
         {
