@@ -1,6 +1,5 @@
 package GUI;
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import Clases.Grupo;
@@ -9,10 +8,16 @@ import Clases.Grupo;
 public class PanelCentroUsuario extends JPanel implements ActionListener{
 
 	private JButton consultarHab;
+<<<<<<< HEAD
 	private JButton butCrearReserva;
 
 	private static final String ConHabitacion = "ConHabitacion";
 	private static final String CrearReserva = "Reservar Habitacion";
+=======
+	private JButton ConsultarCheck;
+	private static final String ConHabitacion = "ConHabitacion";
+	private static final String CheckOut = "CheckOut";
+>>>>>>> e1d4a001b2824156017e02824bc3300e8bb38647
 	private InterfazLogin interfaz;
 
 	public PanelCentroUsuario(InterfazLogin interfaz){
@@ -23,6 +28,7 @@ public class PanelCentroUsuario extends JPanel implements ActionListener{
 		consultarHab.addActionListener(this);
 		consultarHab.setActionCommand(ConHabitacion);
 
+<<<<<<< HEAD
 		butCrearReserva = new JButton("Reservar habitacion");
 		butCrearReserva.setBounds(120, 180, 175, 50);
 		butCrearReserva.addActionListener(this);
@@ -30,6 +36,15 @@ public class PanelCentroUsuario extends JPanel implements ActionListener{
 
 		add(consultarHab);
 		add(butCrearReserva);
+=======
+		ConsultarCheck = new JButton("CheckOut");
+		ConsultarCheck.setBounds(420, 280, 175, 50);
+		ConsultarCheck.addActionListener(this);
+		ConsultarCheck.setActionCommand(CheckOut);
+
+		add(consultarHab);
+		add(ConsultarCheck);
+>>>>>>> e1d4a001b2824156017e02824bc3300e8bb38647
 	}
 
 	@Override
@@ -53,6 +68,7 @@ public class PanelCentroUsuario extends JPanel implements ActionListener{
 			
 			
 		}
+<<<<<<< HEAD
 		if (grito.equals(CrearReserva)) {
 			
 			int inicialAnio = Integer.parseInt(JOptionPane.showInputDialog("Año inicio de reserva"));
@@ -94,6 +110,20 @@ public class PanelCentroUsuario extends JPanel implements ActionListener{
 			}
 
 			
+=======
+		if (grito.equals(CheckOut)){
+			String IDHabitacion = JOptionPane.showInputDialog("Ingrese el ID de su habitacion)");
+			String checkOut = interfaz.checkOut(IDHabitacion);
+			JOptionPane.showMessageDialog(interfaz,checkOut);
+			String tipo = JOptionPane.showInputDialog("Escriba la forma de pago: PayPal, Payu o Sire (Escriba Exactamente)");
+			String cuenta = JOptionPane.showInputDialog("ingrese su nombre");
+			cuenta += ", ";
+			cuenta += JOptionPane.showInputDialog("ingrese su numero de cuenta");
+			int cantidad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad a pagar"));
+			cantidad *= 0.9;
+			interfaz.pago(tipo, cuenta, cantidad);
+			JOptionPane.showMessageDialog(interfaz, "Pago exitoso");
+>>>>>>> e1d4a001b2824156017e02824bc3300e8bb38647
 		}
 	}
 
