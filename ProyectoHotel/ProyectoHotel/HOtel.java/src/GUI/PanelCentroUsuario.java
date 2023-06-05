@@ -8,7 +8,9 @@ import java.awt.event.ActionListener;
 public class PanelCentroUsuario extends JPanel implements ActionListener{
 
 	private JButton consultarHab;
+	private JButton ConsultarCheck;
 	private static final String ConHabitacion = "ConHabitacion";
+	private static final String CheckOut = "CheckOut";
 	private InterfazLogin interfaz;
 
 	public PanelCentroUsuario(InterfazLogin interfaz){
@@ -19,7 +21,13 @@ public class PanelCentroUsuario extends JPanel implements ActionListener{
 		consultarHab.addActionListener(this);
 		consultarHab.setActionCommand(ConHabitacion);
 
+		ConsultarCheck = new JButton("CheckOut");
+		ConsultarCheck.setBounds(420, 280, 175, 50);
+		ConsultarCheck.addActionListener(this);
+		ConsultarCheck.setActionCommand(CheckOut);
+
 		add(consultarHab);
+		add(ConsultarCheck);
 	}
 
 	@Override
@@ -42,6 +50,19 @@ public class PanelCentroUsuario extends JPanel implements ActionListener{
 			}
 			
 			
+		}
+		if (grito.equals(CheckOut)){
+			String IDHabitacion = JOptionPane.showInputDialog("Ingrese el ID de su habitacion)");
+			String checkOut = interfaz.checkOut(IDHabitacion);
+			JOptionPane.showMessageDialog(interfaz,checkOut);
+			String tipo = JOptionPane.showInputDialog("Escriba la forma de pago: PayPal, Payu o Sire (Escriba Exactamente)");
+			String cuenta = JOptionPane.showInputDialog("ingrese su nombre");
+			cuenta += ", ";
+			cuenta += JOptionPane.showInputDialog("ingrese su numero de cuenta");
+			int cantidad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad a pagar"));
+			cantidad *= 0.9;
+			interfaz.pago(tipo, cuenta, cantidad);
+			JOptionPane.showMessageDialog(interfaz, "Pago exitoso");
 		}
 	}
 
