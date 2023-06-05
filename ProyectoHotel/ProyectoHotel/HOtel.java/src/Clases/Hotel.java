@@ -1,5 +1,6 @@
 package Clases;
 import java.util.Date;
+import java.util.HashMap;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.util.ArrayList;
@@ -26,6 +27,8 @@ public class Hotel implements Serializable{
 	private boolean wifiGratis;
 	private boolean recepcion24h;
 	private boolean admiteMascotas;
+	private HashMap<String, Integer> consumidos;
+	private HashMap<String, Float> precios;
     
   //public static Frame frame;
 
@@ -43,7 +46,23 @@ public class Hotel implements Serializable{
 		this.wifiGratis = true;
 		this.recepcion24h = true;
 		this.admiteMascotas = true;
+		this.consumidos = new HashMap<String, Integer>();
+		this.precios = new HashMap<String, Float>();
     }
+    
+   public void Mapa1(ArrayList<Inventario> inventarios) {
+	  for(Inventario i: inventarios) {
+		  String nombre = i.getProducto();
+		  this.consumidos.put(nombre, 0);
+	  }
+   }
+   public void Mapa2(ArrayList<MenuRestaurante> productos) {
+	   for(MenuRestaurante p: productos) {
+		   String nombre = p.getNombre();
+		   float precio =p.getPrecio();
+		   this.precios.put(nombre, precio);
+	   }
+   }
 
 
 
@@ -109,6 +128,8 @@ public class Hotel implements Serializable{
                 i.setCantidad(valor);
                 ConsumoHot servicio1=new ConsumoHot(IDHabitacion, "consumo",servicio);
                 consumosHotel.add(servicio1);
+                int consume = consumidos.get(i.getProducto()+1);
+                consumidos.put(i.getProducto(), consume);
                 if(i.getCantidad()==0){
                     inventarios.remove(i);
                 }
@@ -742,7 +763,7 @@ public class Hotel implements Serializable{
 			linea = lector.readLine();
 		}
 		lector.close();
-    	
+    	Mapa1(inventarios);
     }
     
     private void cargarServicio(String Servicio) throws IOException{
@@ -796,6 +817,7 @@ public class Hotel implements Serializable{
 			}
 
 			linea = lector.readLine();
+			Mapa2(productos);
 		}
 		lector.close();
 	}
@@ -905,5 +927,12 @@ public String input(String mensaje)
 	public ArrayList<MenuRestaurante> getProductos() {
 		return productos;
 	}
+	public HashMap<String, Integer> getMapaCantidad() {
+		return consumidos;
+	}
+	public HashMap<String, Float> getMapaPrecios(){
+		return precios;
+	}
+	
 
 }
