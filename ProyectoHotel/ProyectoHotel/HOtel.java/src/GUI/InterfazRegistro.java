@@ -1,8 +1,10 @@
 package GUI;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import java.awt.*;
+import java.io.IOException;
 
 public class InterfazRegistro extends JFrame{
 
@@ -36,8 +38,14 @@ public boolean registro(){
     String usuario = panelCentro.getTxtNum1();
     String contra = panelCentro.getTxtNum2();
 
-    login.registro(usuario, contra);
-    
+        
+    try {
+        login.registro(usuario, contra);
+        JOptionPane.showMessageDialog(null, "Registro exitoso ", null, 1, null);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Registro fallido ", null, 1, null);
+    }
+
     return x;
 }
 }

@@ -11,7 +11,7 @@ public class PanelCentroUsuario extends JPanel implements ActionListener{
 	private static final String ConHabitacion = "ConHabitacion";
 	private InterfazLogin interfaz;
 
-	public PanelCentroUsuario(){
+	public PanelCentroUsuario(InterfazLogin interfaz){
 		this.interfaz = interfaz;
 
 		consultarHab = new JButton("Consultar Habitacion");
@@ -24,8 +24,25 @@ public class PanelCentroUsuario extends JPanel implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
+		String grito = e.getActionCommand();
+		if (grito.equals(ConHabitacion)) {
+			String IDHabitacion = JOptionPane.showInputDialog("Ingrese el ID de la habitación");
+			String opcion = JOptionPane.showInputDialog("Escriba <1> si quiere consultar una reserva en un día en espesifico \n"
+					+ "o <2> si quiere consultar el toda la información de la habitacion\n");
+			if (opcion.equals("1")) {
+				int inicialAnio = Integer.parseInt(JOptionPane.showInputDialog("Año inicio de reserva"));
+				int inicialMes = Integer.parseInt(JOptionPane.showInputDialog("Mes inicio de reserva"));
+				int inicialDia = Integer.parseInt(JOptionPane.showInputDialog("Día inicio de reserva"));
+				String respuesta = interfaz.consultarHabitacion(1,IDHabitacion, inicialAnio, inicialMes, inicialDia);
+				JOptionPane.showMessageDialog(interfaz,respuesta);
+			}
+			else if (opcion.equals("2")) {
+				String respuesta = interfaz.consultarHabitacion(2,IDHabitacion, 0,0,0);
+				JOptionPane.showMessageDialog(interfaz,respuesta);
+			}
+			
+			
+		}
 	}
 
 	
