@@ -133,7 +133,15 @@ public class PanelBotonRecep extends JPanel implements ActionListener{
 			
 			String IDHabitacion = JOptionPane.showInputDialog("Ingrese el ID de su habitacion)");
 			String checkOut = interfaz.checkOut(IDHabitacion);
-			JOptionPane.showMessageDialog(interfaz,checkOut);			
+			JOptionPane.showMessageDialog(interfaz,checkOut);
+			String tipo = JOptionPane.showInputDialog("Escriba la forma de pago: PayPal, Payu o Sire (Escriba Exactamente)");
+			String cuenta = JOptionPane.showInputDialog("ingrese su nombre");
+			cuenta += ", ";
+			cuenta += JOptionPane.showInputDialog("ingrese su numero de cuenta");
+			int cantidad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad a pagar"));
+			interfaz.pago(tipo, cuenta, cantidad);
+			JOptionPane.showMessageDialog(interfaz, "Pago exitoso");
+					
 		}
 		if (grito.equals(ConInventario)) {
 			

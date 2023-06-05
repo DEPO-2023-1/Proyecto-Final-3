@@ -151,6 +151,10 @@ public class InterfazLogin extends JFrame{
 		return null;
 	}
 
+    public void pago(String tipo, String cuenta, int cantidad){
+        app.pago(tipo, cuenta, cantidad);
+    }
+
 
     public void dispose( )
     {
