@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import java.awt.*;
-import java.io.IOException;
+
 
 public class InterfazRegistro extends JFrame{
 
