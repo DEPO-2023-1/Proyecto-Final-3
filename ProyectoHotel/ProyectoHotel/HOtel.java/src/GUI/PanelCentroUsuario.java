@@ -11,13 +11,15 @@ public class PanelCentroUsuario extends JPanel implements ActionListener{
 	private static final String ConHabitacion = "ConHabitacion";
 	private InterfazLogin interfaz;
 
-	public PanelCentroUsuario(InterfazLogin interfaz){
+	public PanelCentroUsuario(){
 		this.interfaz = interfaz;
-		
+
 		consultarHab = new JButton("Consultar Habitacion");
 		consultarHab.setBounds(720, 480, 175, 50);
 		consultarHab.addActionListener(this);
 		consultarHab.setActionCommand(ConHabitacion);
+
+		add(consultarHab);
 	}
 
 	@Override
