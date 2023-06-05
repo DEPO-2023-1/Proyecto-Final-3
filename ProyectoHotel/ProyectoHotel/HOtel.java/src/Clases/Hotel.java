@@ -45,6 +45,8 @@ public class Hotel implements Serializable{
 		this.admiteMascotas = true;
     }
 
+
+
     public boolean seleccionarUsuario(String login, String contraseña, int usuario){
 		String direccion = "";
 		boolean result = false;
@@ -421,6 +423,7 @@ public class Hotel implements Serializable{
     	return lista;
     }
     
+
 
     public void cargarHotel(String habitaciones, String inventario, String servicio, String restaurante, String temporada) throws IOException{
 
