@@ -13,6 +13,7 @@ public class PanelSurAdmin extends JPanel implements ActionListener{
 	private static final String manual = "CARGAR INFO MANUAL";
 	private static final String actualizar = "ACTUALIZARINFO";
 	private static final String salir = "SALIR";
+	private static final String reportes = "REPORTES";
 	private InterfazLogin interfaz;
 
 	
@@ -20,6 +21,7 @@ public class PanelSurAdmin extends JPanel implements ActionListener{
 	private JButton manualButton;
 	private JButton actualizarButton;
 	private JButton salirButton;
+	private JButton reportesButton;
 	
 	
 	public PanelSurAdmin(InterfazLogin interfaz) {
@@ -28,25 +30,29 @@ public class PanelSurAdmin extends JPanel implements ActionListener{
 		setLayout(null);
 		
 		archivosButton = new JButton("CARGAR INFO ARCHIVOS");
-		archivosButton.setBounds(100, 180, 300, 100);
+		archivosButton.setBounds(100, 100, 300, 100);
 		archivosButton.addActionListener(this);
 		archivosButton.setActionCommand(archivos);
 		
 		manualButton = new JButton("CARGAR ARCHIVOS MANUAL");
-		manualButton.setBounds(100, 380, 300, 100);
+		manualButton.setBounds(100, 250, 300, 100);
 		manualButton.addActionListener(this);
 		manualButton.setActionCommand(manual);
 		
 		actualizarButton = new JButton("ACTUALIZAR INFO");
-		actualizarButton.setBounds(600, 180, 300, 100);
+		actualizarButton.setBounds(600, 100, 300, 100);
 		actualizarButton.addActionListener(this);
 		actualizarButton.setActionCommand(actualizar);
 		
 		salirButton = new JButton("SALIR");
-		salirButton.setBounds(600, 380, 300, 100);
+		salirButton.setBounds(600, 250, 300, 100);
 		salirButton.addActionListener(this);
 		salirButton.setActionCommand(salir);
 
+		reportesButton = new JButton("REPORTES");
+		archivosButton.setBounds(100, 400, 300, 100);
+		archivosButton.addActionListener(this);
+		archivosButton.setActionCommand(reportes);
 		
 		add(archivosButton);
 		add(manualButton);
@@ -79,7 +85,9 @@ public class PanelSurAdmin extends JPanel implements ActionListener{
 		if (grito.equals(salir)) {
 			System.exit(0);
 		}
-		
+		if (grito.equals(reportes)) {
+			InterfazReportes reportes = new InterfazReportes(interfaz);
+		}
 		
 	}
 }

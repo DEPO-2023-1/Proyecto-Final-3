@@ -135,6 +135,16 @@ public class InterfazLogin extends JFrame{
         String [] resultado = app.agregarConsumo(habitacion, servicio, tipo);
         return resultado;
     }
+    public void reporteCantidad() {
+        app.reporteCantidad();
+       }
+    public void reportePrecios() {
+       	app.reportePrecios();
+       }
+       public void reporteNoche() {
+       	app.reporteNoche();
+       }
+    
     public String input(String mensaje)
 	{
 		try
@@ -180,7 +190,7 @@ public class InterfazLogin extends JFrame{
         App app = null;
 
         try{
-            app = new App("ProyectoHotel/ProyectoHotel/HOtel.java/data/appp.txt");
+            app = new App("ProyectoHotel/ProyectoHotel/HOtel.java/data/app.txt");
         }
         catch( Exception e )
         {

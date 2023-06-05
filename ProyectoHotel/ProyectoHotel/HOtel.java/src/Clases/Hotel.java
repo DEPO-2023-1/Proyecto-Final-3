@@ -29,6 +29,7 @@ public class Hotel implements Serializable{
 	private boolean admiteMascotas;
 	private HashMap<String, Integer> consumidos;
 	private HashMap<String, Float> precios;
+	private Reportes reportes;
     
   //public static Frame frame;
 
@@ -48,6 +49,7 @@ public class Hotel implements Serializable{
 		this.admiteMascotas = true;
 		this.consumidos = new HashMap<String, Integer>();
 		this.precios = new HashMap<String, Float>();
+		this.reportes = new Reportes(this);
     }
     
    public void Mapa1(ArrayList<Inventario> inventarios) {
@@ -854,6 +856,15 @@ public class Hotel implements Serializable{
 		lector.close();
 
 
+    }
+    public void reporteCantidad() {
+     reportes.reporteCantidad();
+    }
+    public void reportePrecios() {
+    	reportes.reporteValorTotal();
+    }
+    public void reporteNoche() {
+    	reportes.precioPorNoche();
     }
 
 public String input(String mensaje)

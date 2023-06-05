@@ -83,6 +83,16 @@ public class App {
     	String respuesta = hotel.consultarHabitacion(opcion, IDHabitacion, inicialAnio, inicialMes, inicialDia);
     	return respuesta;
     }
+    
+    public void reporteCantidad() {
+        hotel.reporteCantidad();
+       }
+    public void reportePrecios() {
+       	hotel.reportePrecios();
+       }
+       public void reporteNoche() {
+       	hotel.reporteNoche();
+       }
 
     
     public ArrayList<Integer> listaFechas(){
